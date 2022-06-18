@@ -126,41 +126,41 @@ create table eventoReposicao
 
 -- insert into table values (col1val, col2val, col3val, ...);
 -- char = ''
-insert into categoria values ('Bebida')
-insert into categoria values ('Refrigerante')
-insert into categoria values ('Bebida sem Gás')
+insert into categoria values ('Bebida');
+insert into categoria values ('Refrigerante');
+insert into categoria values ('Bebida sem Gás');
 
-insert into categoria values ('Comida')
-insert into categoria values ('Pastelaria')
-insert into categoria values ('Doces')
-insert into categoria values ('Bolachas')
+insert into categoria values ('Comida');
+insert into categoria values ('Pastelaria');
+insert into categoria values ('Doces');
+insert into categoria values ('Bolachas');
 
-insert into categoria values ('Outros')
-insert into categoria values ('Consumíveis')
-insert into categoria values ('Higiene')
-
-
-insert into categoriaSimples values ('Refrigerante')
-insert into categoriaSimples values ('Bebida sem Gás')
-insert into categoriaSimples values ('Pastelaria')
-insert into categoriaSimples values ('Doces')
-insert into categoriaSimples values ('Bolachas')
-insert into categoriaSimples values ('Outros')
+insert into categoria values ('Outros');
+insert into categoria values ('Consumíveis');
+insert into categoria values ('Higiene');
 
 
-insert into superCategoria values ('Bebida')
-insert into superCategoria values ('Comida')
-insert into superCategoria values ('Outros')
-insert into superCategoria values ('Consumíveis')
+insert into categoriaSimples values ('Refrigerante');
+insert into categoriaSimples values ('Bebida sem Gás');
+insert into categoriaSimples values ('Pastelaria');
+insert into categoriaSimples values ('Doces');
+insert into categoriaSimples values ('Bolachas');
+insert into categoriaSimples values ('Outros');
 
 
-insert into temOutra values ('Bebida', 'Refrigerante')
-insert into temOutra values ('Bebida', 'Bebida sem Gás')
-insert into temOutra values ('Comida', 'Pastelaria')
-insert into temOutra values ('Comida', 'Doces')
-insert into temOutra values ('Comida', 'Bolachas')
-insert into temOutra values ('Outros', 'Consumíveis')
-insert into temOutra values ('Consumíveis', 'Higiene')
+insert into superCategoria values ('Bebida');
+insert into superCategoria values ('Comida');
+insert into superCategoria values ('Outros');
+insert into superCategoria values ('Consumíveis');
+
+
+insert into temOutra values ('Bebida', 'Refrigerante');
+insert into temOutra values ('Bebida', 'Bebida sem Gás');
+insert into temOutra values ('Comida', 'Pastelaria');
+insert into temOutra values ('Comida', 'Doces');
+insert into temOutra values ('Comida', 'Bolachas');
+insert into temOutra values ('Outros', 'Consumíveis');
+insert into temOutra values ('Consumíveis', 'Higiene');
 
 
 insert into produto values (1111111111111, 'Bebida', 'Powerade');
@@ -176,17 +176,17 @@ insert into produto values (1222222222222, 'Higiene', 'Máscara COVID-19');
 insert into produto values (1333333333333, 'Higiene', 'Lenços de Papel Renova');
 
 
-insert into temCategoria values (1111111111111, 'Bebida')
-insert into temCategoria values (2222222222222, 'Bebida sem Gás')
-insert into temCategoria values (3333333333333, 'Bebida sem Gás')
-insert into temCategoria values (4444444444444, 'Refrigerante')
-insert into temCategoria values (5555555555555, 'Pastelaria')
-insert into temCategoria values (6666666666666, 'Doces')
-insert into temCategoria values (7777777777777, 'Bolachas')
-insert into temCategoria values (8888888888888, 'Consumíveis')
-insert into temCategoria values (9999999999999, 'Consumíveis')
-insert into temCategoria values (1222222222222, 'Higiene')
-insert into temCategoria values (1333333333333, 'Higiene')
+insert into temCategoria values (1111111111111, 'Bebida');
+insert into temCategoria values (2222222222222, 'Bebida sem Gás');
+insert into temCategoria values (3333333333333, 'Bebida sem Gás');
+insert into temCategoria values (4444444444444, 'Refrigerante');
+insert into temCategoria values (5555555555555, 'Pastelaria');
+insert into temCategoria values (6666666666666, 'Doces');
+insert into temCategoria values (7777777777777, 'Bolachas');
+insert into temCategoria values (8888888888888, 'Consumíveis');
+insert into temCategoria values (9999999999999, 'Consumíveis');
+insert into temCategoria values (1222222222222, 'Higiene');
+insert into temCategoria values (1333333333333, 'Higiene');
 
 
 insert into IVM values (0001111111111, 'Vending lda');
