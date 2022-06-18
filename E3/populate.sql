@@ -218,3 +218,69 @@ insert into instaladaEm values (0001111111111, 'Instant Foodies inc', 'BP Rua da
 
 
 insert into prateleira values (1, 0001111111111, 'Vending lda', 30, 'Bebida');
+insert into prateleira values (2, 0001111111111, 'Vending lda', 30, 'Comida');
+insert into prateleira values (3, 0001111111111, 'Vending lda', 30, 'Consumíveis');
+insert into prateleira values (1, 0001222222222, 'Vending lda', 30, 'Bebida');
+insert into prateleira values (2, 0001222222222, 'Vending lda', 30, 'Comida');
+insert into prateleira values (3, 0001222222222, 'Vending lda', 30, 'Consumíveis');
+insert into prateleira values (1, 0001133333333, 'Vending lda', 30, 'Bebida');
+insert into prateleira values (2, 0001133333333, 'Vending lda', 30, 'Comida');
+insert into prateleira values (3, 0001133333333, 'Vending lda', 30, 'Consumíveis');
+insert into prateleira values (1, 0001114444444, 'Vending lda', 30, 'Bebida');
+insert into prateleira values (2, 0001114444444, 'Vending lda', 30, 'Comida');
+insert into prateleira values (3, 0001114444444, 'Vending lda', 30, 'Consumíveis');
+insert into prateleira values (1, 1111111111111, 'Instant Foodies inc', 25, 'Bebida');
+insert into prateleira values (2, 1111111111111, 'Instant Foodies inc', 25, 'Comida');
+insert into prateleira values (1, 0001111111111, 'Instant Foodies inc', 25, 'Bebida');
+insert into prateleira values (2, 0001111111111, 'Instant Foodies inc', 25, 'Comida');
+
+
+-- insert into planograma values (ean, num_prateleira, num_serie, fabricante, faces, unidades, loc)
+insert into planograma values (1111111111111, 1, 0001111111111, 'Vending lda', 1, 5, 'Fila A');
+insert into planograma values (2222222222222, 1, 0001111111111, 'Vending lda', 2, 10, 'Fila B e C');
+insert into planograma values (3333333333333, 1, 0001111111111, 'Vending lda', 1, 5, 'Fila D');
+insert into planograma values (4444444444444, 1, 0001111111111, 'Vending lda', 2, 15, 'Fila D e E');
+insert into planograma values (1111111111111, 1, 0001222222222, 'Vending lda', 1, 5, 'Fila A');
+insert into planograma values (2222222222222, 1, 0001222222222, 'Vending lda', 2, 10, 'Fila B e C');
+insert into planograma values (3333333333333, 1, 0001222222222, 'Vending lda', 1, 5, 'Fila D');
+insert into planograma values (1111111111111, 1, 0001133333333, 'Vending lda', 1, 5, 'Fila A');
+insert into planograma values (2222222222222, 1, 0001133333333, 'Vending lda', 2, 10, 'Fila B e C');
+insert into planograma values (3333333333333, 1, 0001133333333, 'Vending lda', 1, 5, 'Fila D');
+insert into planograma values (4444444444444, 1, 0001133333333, 'Vending lda', 2, 15, 'Fila D e E');
+insert into planograma values (2222222222222, 1, 0001114444444, 'Vending lda', 2, 10, 'Fila B e C');
+insert into planograma values (3333333333333, 1, 0001114444444, 'Vending lda', 1, 5, 'Fila D');
+insert into planograma values (2222222222222, 1, 1111111111111, 'Instant Foodies inc', 2, 12, 'Fila B e C');
+insert into planograma values (3333333333333, 1, 1111111111111, 'Instant Foodies inc', 1, 6, 'Fila D');
+insert into planograma values (1111111111111, 1, 0001111111111, 'Instant Foodies inc', 1, 6, 'Fila A');
+insert into planograma values (2222222222222, 1, 0001111111111, 'Instant Foodies inc', 2, 12, 'Fila B e C');
+insert into planograma values (3333333333333, 1, 0001111111111, 'Instant Foodies inc', 1, 6, 'Fila D');
+insert into planograma values (4444444444444, 1, 0001111111111, 'Instant Foodies inc', 2, 20, 'Fila E e F');
+
+-- se for preciso inserir comida e outros
+
+-- insert into retalhista values (tin, retalhista_nome)
+insert into retalhista values (9876543211111, 'Drinks & co');
+insert into retalhista values (9876543212222, 'Healthy Vending Food');
+insert into retalhista values (9876543213333, 'Unilever');
+
+-- insert into responsavelPor values (categoria_nome, tin, num_serie, fabricante)
+insert into responsavelPor values ('Bebida', 9876543211111, 0001111111111, 'Vending lda');
+insert into responsavelPor values ('Refrigerante', 9876543211111, 0001111111111, 'Vending lda');
+insert into responsavelPor values ('Bebida sem Gás', 9876543212222, 0001111111111, 'Vending lda');
+insert into responsavelPor values ('Comida', 9876543212222, 0001111111111, 'Vending lda');
+insert into responsavelPor values ('Consumíveis', 9876543213333, 0001111111111, 'Vending lda');
+
+insert into responsavelPor values ('Refrigerante', 9876543213333, 0111111111111, 'Instant Foodies inc');
+insert into responsavelPor values ('Bebida sem Gás', 9876543213333, 0111111111111, 'Instant Foodies inc');
+insert into responsavelPor values ('Pastelaria', 9876543213333, 0111111111111, 'Instant Foodies inc');
+insert into responsavelPor values ('Doces', 9876543213333, 0111111111111, 'Instant Foodies inc');
+insert into responsavelPor values ('Bolachas', 9876543213333, 0111111111111, 'Instant Foodies inc');
+insert into responsavelPor values ('Outros', 9876543213333, 0111111111111, 'Instant Foodies inc');
+
+-- se for preciso inserir mais entradas
+
+-- insert into eventoReposicao values (ean, num_prateleira, num_serie, fabricante, instante, unidades, tin)
+insert into eventoReposicao values (1111111111111, 1, 0001111111111, 'Vending lda', 20220101120000, 5, 9876543211111);
+insert into eventoReposicao values (2222222222222, 1, 0001111111111, 'Vending lda', 20220102120000, 1, 9876543211111);
+
+-- é preciso ter muito cuidado com o que inserir aqui portanto vou deixar para mais tarde
