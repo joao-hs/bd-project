@@ -108,7 +108,7 @@ create table eventoReposicao
      num_prateleira numeric(2) not null,
      num_serie numeric(13) not null,
      fabricante varchar(80) not null,
-     instante numeric(14) not null
+     instante timestamp without time zone,
      unidades numeric(4) not null,
      tin numeric(13) not null,
      constraint pk_eventoReposicao primary key(ean, num_prateleira, num_serie, fabricante, instante),
