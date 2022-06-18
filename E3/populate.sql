@@ -45,8 +45,8 @@ create table produto
 create table temCategoria
     (ean numeric(13) not null,
      categoria_nome varchar(80) not null,
-     constraint fk_temCategoria_produro foreign key(ean) references produto(ean),
-     constraint fk_temCategoria_categoria foreign key (categoria_nome) references categoria(categoria_nome);)
+     constraint fk_temCategoria_produto foreign key(ean) references produto(ean),
+     constraint fk_temCategoria_categoria foreign key(categoria_nome) references categoria(categoria_nome);)
 
 create table IVM
     (num_serie numeric(13) not null,
@@ -63,8 +63,7 @@ create table instaladaEm
     (num_serie numeric(13) not null,
      fabricante varchar(80) not null,
      pontoDeRetalho_nome varchar(80) not null,
-     constraint fk_instaladaEm_IVM foreign key(num_serie) references IVM(num_serie),
-     constraint fk_instaladaEm_IVM foreign key(fabricante) references IVM(fabricante),
+     constraint fk_instaladaEm_IVM foreign key(num_serie, fabricante) references IVM(num_serie, fabricante),
      constraint fk_instaladaEm_pontoDeRetalho foreign key(pontoDeRetalho_nome) references pontoDeRetalho(pontoDeRetalho_nome);)
      
 create table prateleira
@@ -74,9 +73,8 @@ create table prateleira
      altura numeric(3) not null,
      categoria_nome varchar(80) not null,
      constraint pk_prateleira primary key(num_prateleira, num_serie, fabricante),
-     constraint fk_instaladaEm_IVM foreign key(num_serie) references IVM(num_serie),
-     constraint fk_instaladaEm_IVM foreign key(fabricante) references IVM(fabricante),
-     constraint fk_temCategoria_categoria foreign key (categoria_nome) references categoria(categoria_nome);)
+     constraint fk_instaladaEm_IVM foreign key(num_serie, fabricante) references IVM(num_serie, fabricante),
+     constraint fk_temCategoria_categoria foreign key(categoria_nome) references categoria(categoria_nome);)
 
 create table planograma
     (ean numeric(13) not null,
@@ -86,11 +84,44 @@ create table planograma
      faces numeric(2) not null,
      unidades numeric(2) not null,
      loc varchar(80) not null,
+     constraint pk_planograma primary key(ean, num_prateleira, num_serie, fabricante),
      constraint fk_planograma_produto foreign key(ean) references produto(ean),
      constraint fk_planograma_prateleira foreign key(num_prateleira, num_serie, fabricante) prateleira(num_prateleira, num_serie, fabricante);)
 
+create table retalhista
+    (tin numeric(13) not null unique,
+     retalhista_nome varchar(80) not null unique,
+     constraint pk_retalhista primary key(tin);)
+
+create table responsavelPor
+    (categoria_nome varchar(80) not null,
+     tin numeric(13) not null,
+     num_serie numeric(13) not null,
+     fabricante varchar(80) not null,
+     constraint pk_responsavelPor primary key(num_serie, fabricante),
+     constraint fk_responsavelPor_categoria foreign key(categoria_nome) references categoria(categoria_nome),
+     constraint fk_responsavelPor_retalhista foreign key(tin),
+     constraint fk_responsavelPor_prateleira foreign key(num_serie, fabricante) prateleira(num_serie, fabricante);)
+
+create table eventoReposicao
+    (ean numeric(13) not null,
+     num_prateleira numeric(2) not null,
+     num_serie numeric(13) not null,
+     fabricante varchar(80) not null,
+     instante numeric(14) not null
+     unidades numeric(4) not null,
+     tin numeric(13) not null,
+     constraint pk_eventoReposicao primary key(ean, num_prateleira, num_serie, fabricante, instante),
+     constraint fk_eventoReposicao_retalhista foreign key(tin),
+     constraint fk_eventoReposicao_planograma foreign key(ean, num_prateleira, num_serie, fabricante) planograma(ean, num_prateleira, num_serie, fabricante)
+
+
+        
+)
 ---------------------------------------- 
 ----------------------------------------
+
+
 
 
 -- insert into table values (col1val, col2val, col3val, ...);
