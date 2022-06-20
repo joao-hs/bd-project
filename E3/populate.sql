@@ -138,7 +138,7 @@ insert into categoria_simples values ('Bebida sem Gás');
 insert into categoria_simples values ('Pastelaria');
 insert into categoria_simples values ('Doces');
 insert into categoria_simples values ('Bolachas');
-insert into categoria_simples values ('Outros');
+insert into categoria_simples values ('Higiene');
 
 
 insert into super_categoria values ('Bebida');
@@ -270,10 +270,13 @@ insert into responsavel_por values ('Doces', 9876543213333, 1111111111110, 'Inst
 insert into responsavel_por values ('Bolachas', 9876543213333, 1111111111110, 'Instant Foodies inc');
 insert into responsavel_por values ('Outros', 9876543213333, 1111111111110, 'Instant Foodies inc');
 
+
 -- se for preciso inserir mais entradas
 
 -- insert into evento_reposicao values (ean, num_prateleira, num_serie, fabricante, instante, unidades, tin)
 insert into evento_reposicao values (1111111111111, 1, 1111111111000, 'Vending lda', '2022-01-01 12:00:00', 5, 9876543211111);
 insert into evento_reposicao values (2222222222222, 1, 1111111111000, 'Vending lda', '2022-02-01 12:00:00', 1, 9876543211111);
+insert into evento_reposicao values (1111111111111, 1, 1111111111000, 'Vending lda', '2023-01-01 12:00:00', 5, 9876543211111);
+insert into evento_reposicao values (2222222222222, 1, 1111111111000, 'Vending lda', '2023-02-01 12:00:00', 1, 9876543213333);
 
 -- é preciso ter muito cuidado com o que inserir aqui portanto vou deixar para mais tarde
