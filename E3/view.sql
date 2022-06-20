@@ -12,7 +12,7 @@ SELECT
     has_cat.categoria_nome,
     to_char(instante, 'YYYY'),
     to_char(instante, 'Q'),
-    to_char(instante, 'Mon'),
+    to_char(instante, 'MM'),
     to_char(instante, 'DD'),
     to_char(instante, 'D'),
     pont_ret.distrito, 
@@ -21,5 +21,6 @@ SELECT
     FROM evento_reposicao AS rep_event JOIN instalada_em AS inst
     ON rep_event.num_serie = inst.num_serie AND rep_event.fabricante = inst.fabricante
     JOIN ponto_de_retalho as pont_ret ON inst.ponto_de_retalho_nome = pont_ret.ponto_de_retalho_nome
-    JOIN tem_categoria as has_cat ON rep_event.ean = has_cat.ean;
+    JOIN tem_categoria as has_cat ON rep_event.ean = has_cat.ean
+    ORDER BY rep_event.instante;
     
