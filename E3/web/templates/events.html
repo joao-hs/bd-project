@@ -2,16 +2,16 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> List accounts - Flask</title>
+        <title> List events - Flask</title>
     </head>
     <body style="padding:20px">
     {% if cursor %}
+    <h3>Lista de eventos de reposição da IVM com o número de série {{ params.get("num_serie") }} do fabricante {{ params.get("fabricante") }}</h3>
         <table border="2px">
             <thead>
                 <tr>
-                    <th>Conta</th>
-                    <th>Agência</th>
-                    <th>Saldo</th>
+                    <th>Categoria</th>
+                    <th>Número de unidades repostas</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +19,6 @@
                 <tr>
                     <td>{{ record[0] }}</td>
                     <td>{{ record[1] }}</td>
-                    <td>{{ record[2] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
