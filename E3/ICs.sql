@@ -18,10 +18,6 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- IC2 --
-CREATE TRIGGER max_units_trigger
-BEFORE INSERT ON evento_reposicao
-EXECUTE PROCEDURE max_units_proc();
-
 CREATE OR REPLACE FUNCTION max_units_proc()
 RETURNS TRIGGER AS
 $$
@@ -48,6 +44,10 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER max_units_trigger
+BEFORE INSERT ON evento_reposicao
+EXECUTE PROCEDURE max_units_proc();
 
 -- IC3 --
 CREATE TRIGGER verifica_categorias_trigger

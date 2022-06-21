@@ -37,16 +37,16 @@ create table tem_outra
 
 create table produto
     (ean numeric(13) not null unique,
-     categoria_nome varchar(80) not null,
+     categoria_simples_nome varchar(80) not null,
      descr varchar(50) not null,
      constraint pk_produto primary key(ean),
-     constraint fk_produto_categoria foreign key(categoria_nome) references categoria(categoria_nome));
+     constraint fk_produto_categoria foreign key(categoria_simples_nome) references categoria_simples(categoria_simples_nome));
 
 create table tem_categoria
     (ean numeric(13) not null,
-     categoria_nome varchar(80) not null,
+     categoria_simples_nome varchar(80) not null,
      constraint fk_tem_categoria_produto foreign key(ean) references produto(ean),
-     constraint fk_tem_categoria_categoria foreign key(categoria_nome) references categoria(categoria_nome));
+     constraint fk_tem_categoria_categoria foreign key(categoria_simples_nome) references categoria_simples(categoria_simples_nome));
 
 create table ivm
     (num_serie numeric(13) not null,
@@ -131,6 +131,7 @@ insert into categoria values ('Bolachas');
 insert into categoria values ('Outros');
 insert into categoria values ('Consumíveis');
 insert into categoria values ('Higiene');
+insert into categoria values ('Gelo');
 
 
 insert into categoria_simples values ('Refrigerante');
@@ -139,6 +140,7 @@ insert into categoria_simples values ('Pastelaria');
 insert into categoria_simples values ('Doces');
 insert into categoria_simples values ('Bolachas');
 insert into categoria_simples values ('Higiene');
+insert into categoria_simples values ('Gelo');
 
 
 insert into super_categoria values ('Bebida');
@@ -154,30 +156,31 @@ insert into tem_outra values ('Comida', 'Doces');
 insert into tem_outra values ('Comida', 'Bolachas');
 insert into tem_outra values ('Outros', 'Consumíveis');
 insert into tem_outra values ('Consumíveis', 'Higiene');
+insert into tem_outra values ('Consumíveis', 'Gelo');
 
 
-insert into produto values (1111111111111, 'Bebida', 'Powerade');
+insert into produto values (1111111111111, 'Bebida sem Gás', 'Powerade');
 insert into produto values (2222222222222, 'Bebida sem Gás', 'Vitalis 500ml');
 insert into produto values (3333333333333, 'Bebida sem Gás', 'Compal Pêra');
 insert into produto values (4444444444444, 'Refrigerante', 'Iced Tea');
 insert into produto values (5555555555555, 'Pastelaria', 'Croassaint Misto');
 insert into produto values (6666666666666, 'Doces', 'Kinder Bueno');
 insert into produto values (7777777777777, 'Bolachas', 'Tuc');
-insert into produto values (8888888888888, 'Outros', 'Trident');
-insert into produto values (9999999999999, 'Consumíveis', 'Pacote de Gelo Instantâneo');
+insert into produto values (8888888888888, 'Doces', 'Trident');
+insert into produto values (9999999999999, 'Gelo', 'Pacote de Gelo Instantâneo');
 insert into produto values (1222222222222, 'Higiene', 'Máscara COVID-19');
 insert into produto values (1333333333333, 'Higiene', 'Lenços de Papel Renova');
 
 
-insert into tem_categoria values (1111111111111, 'Bebida');
+insert into tem_categoria values (1111111111111, 'Bebida sem Gás');
 insert into tem_categoria values (2222222222222, 'Bebida sem Gás');
 insert into tem_categoria values (3333333333333, 'Bebida sem Gás');
 insert into tem_categoria values (4444444444444, 'Refrigerante');
 insert into tem_categoria values (5555555555555, 'Pastelaria');
 insert into tem_categoria values (6666666666666, 'Doces');
 insert into tem_categoria values (7777777777777, 'Bolachas');
-insert into tem_categoria values (8888888888888, 'Consumíveis');
-insert into tem_categoria values (9999999999999, 'Consumíveis');
+insert into tem_categoria values (8888888888888, 'Doces');
+insert into tem_categoria values (9999999999999, 'Gelo');
 insert into tem_categoria values (1222222222222, 'Higiene');
 insert into tem_categoria values (1333333333333, 'Higiene');
 
@@ -269,7 +272,7 @@ insert into responsavel_por values ('Pastelaria', 9876543213333, 1111111111110, 
 insert into responsavel_por values ('Doces', 9876543213333, 1111111111110, 'Instant Foodies inc');
 insert into responsavel_por values ('Bolachas', 9876543213333, 1111111111110, 'Instant Foodies inc');
 insert into responsavel_por values ('Outros', 9876543213333, 1111111111110, 'Instant Foodies inc');
-
+insert into responsavel_por values ('Gelo', 9876543213333, 1111111111110, 'Instant Foodies inc');
 
 -- se for preciso inserir mais entradas
 
