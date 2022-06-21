@@ -131,6 +131,7 @@ insert into categoria values ('Bolachas');
 insert into categoria values ('Outros');
 insert into categoria values ('Consumíveis');
 insert into categoria values ('Higiene');
+insert into categoria values ('Gelo');
 
 
 insert into categoria_simples values ('Refrigerante');
