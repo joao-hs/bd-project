@@ -27,7 +27,7 @@ def manage_categories():
 def manage_retailer():
     pass
 
-@app.route('/listar-eventos-ivm')
+@app.route('/ivm')
 def get_ivm():
     dbConn=None
     cursor=None

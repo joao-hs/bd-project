@@ -6,6 +6,7 @@
     </head>
     <body style="padding:20px">
     {% if cursor %}
+        <h3>Lista de IVM's com produtos repostos</h3>
         <table border="2px">
             <thead>
                 <tr>
@@ -19,7 +20,7 @@
                     <tr>
                         <td>{{ record[0] }}</td>
                         <td>{{ record[1] }}</td>
-                        <td><a href="events?ivm={{ record[0] + record[1] }}">Listar</a></td>
+                        <td><a href="events?num_serie={{ record[0] }}&fabricante={{ record[1] }}">Listar</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
