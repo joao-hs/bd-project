@@ -13,7 +13,7 @@ drop table retalhista cascade;
 drop table responsavel_por cascade;
 drop table evento_reposicao cascade;
 --------------------
-
+------
 create table categoria
    (categoria_nome 	varchar(80)	not null unique,
     constraint pk_categoria primary key(categoria_nome));
