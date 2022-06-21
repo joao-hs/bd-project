@@ -63,8 +63,27 @@ def list_events():
         dbConn.close()
 
 
+@app.route('/categoria')
+def choose_category():
+    # query que lista super_categoria from hierarquias_cat
+    pass
+
 @app.route('/listar-subcategorias')
 def list_subcategories():
+    
+    """
+    WITH RECURSIVE sub_categorias AS (
+        SELECT sub_categoria, super_categoria
+        FROM hierarquias_cat
+        WHERE sub_categoria = %s
+        UNION
+            SELECT hc.sub_categoria, hc.super_categoria
+            FROM hierarquias_cat AS hc
+            JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
+    ) SELECT *
+    FROM sub_categorias;
+    """
+    query = "WITH RECURSIVE sub_categorias AS (SELECT sub_categoria, super_categoria FROM hierarquias_cat WHERE sub_categoria = %s UNION SELECT hc.sub_categoria, hc.super_categoria FROM hierarquias_cat AS hc JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria) SELECT * FROM sub_categorias;"
     pass
 
 #_____________________________________________________________

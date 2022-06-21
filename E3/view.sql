@@ -4,6 +4,7 @@
 --      ano, trimestre, mes, dia_mes e dia_semana: atributos derivado do atributo instante
 --      unidades: corresponde ao atributo com o emso nome da relação evento_reposição
 DROP VIEW vendas;
+DROP VIEW hierarquias_cat;
 
 CREATE VIEW Vendas(ean, cat, ano, trimestre, mes, dia_mes, dia_semana, distrito, concelho, unidades)
 AS
@@ -24,3 +25,9 @@ SELECT
     JOIN tem_categoria as has_cat ON rep_event.ean = has_cat.ean
     ORDER BY rep_event.instante;
     
+CREATE VIEW hierarquias_cat(sub_categoria, super_categoria)
+AS
+SELECT c.categoria_nome, "to".super_categoria_nome
+FROM tem_outra "to" 
+RIGHT OUTER JOIN categoria c 
+ON "to".categoria_nome=c.categoria_nome;
