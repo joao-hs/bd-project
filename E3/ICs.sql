@@ -50,3 +50,30 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- IC3 --
+CREATE TRIGGER verifica_categorias_trigger
+BEFORE INSERT ON prateleira
+EXECUTE PROCEDURE verifica_planograma();
+
+CREATE OR REPLACE FUNCTION verifica_planograma() RETURNS TRIGGER AS $$
+DECLARE p_ean numeric(13);
+DECLARE num_p numeric(2);
+DECLARE num_s numeric(13);
+DECLARE fab varchar(80);
+DECLARE unit numeric(4);
+DECLARE cursor_planogram CURSOR FOR
+    SELECT ean, num_prateleira, num_serie, fabricante,unidades FROM planograma;
+BEGIN
+    OPEN cursor_planogram;
+    LOOP
+        FETCH cursor_planogram INTO p_ean, num_p, num_s, fab, unit;
+        EXIT WHEN NOT FOUND;
+        IF NEW.num_prateleira = num_p AND NEW.num_serie = num_s AND NEW.fabricante = fab THEN
+            IF NEW.categoria_nome NOT IN (SELECT categoria_nome FROM tem_categoria WHERE ean = NEW.ean) THEN
+                RAISE EXCEPTION 'bla bla'
+            END IF;
+        END IF;
+    END LOOP;
+    CLOSE cursor_planogram;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
