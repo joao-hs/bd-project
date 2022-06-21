@@ -70,21 +70,30 @@ def choose_category():
 
 @app.route('/listar-subcategorias')
 def list_subcategories():
-    
-    """
-    WITH RECURSIVE sub_categorias AS (
-        SELECT sub_categoria, super_categoria
-        FROM hierarquias_cat
-        WHERE sub_categoria = %s
-        UNION
-            SELECT hc.sub_categoria, hc.super_categoria
-            FROM hierarquias_cat AS hc
-            JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
-    ) SELECT *
-    FROM sub_categorias;
-    """
-    query = "WITH RECURSIVE sub_categorias AS (SELECT sub_categoria, super_categoria FROM hierarquias_cat WHERE sub_categoria = %s UNION SELECT hc.sub_categoria, hc.super_categoria FROM hierarquias_cat AS hc JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria) SELECT * FROM sub_categorias;"
-    pass
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        categoria = request.args["categoria"]
+        
+        """
+        WITH RECURSIVE sub_categorias AS (
+            SELECT sub_categoria, super_categoria
+            FROM hierarquias_cat
+            WHERE sub_categoria = %s
+            UNION
+                SELECT hc.sub_categoria, hc.super_categoria
+                FROM hierarquias_cat AS hc
+                JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
+        ) SELECT *
+        FROM sub_categorias;
+        """
+        query = "WITH RECURSIVE sub_categorias AS (SELECT sub_categoria, super_categoria FROM hierarquias_cat WHERE sub_categoria = %s UNION SELECT hc.sub_categoria, hc.super_categoria FROM hierarquias_cat AS hc JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria) SELECT * FROM sub_categorias;"
+        data = (categoria,)
+        cursor.execute(query, data)
+        return render_template("list_subcategories.html", cursor=cursor, params=request.args)
+
 
 #_____________________________________________________________
 
