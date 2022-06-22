@@ -47,20 +47,7 @@ CREATE OR REPLACE FUNCTION remove_category(IN category CHAR) RETURNS VOID AS
 $$
 DECLARE subcategory CHAR(80) DEFAULT '';
 DECLARE subcategories_cursor CURSOR FOR
-    (SELECT sub_categoria
-        FROM(
-            WITH RECURSIVE sub_categorias AS (
-                SELECT sub_categoria, super_categoria
-                FROM hierarquias_cat
-                WHERE sub_categoria = category
-                UNION
-                    SELECT hc.sub_categoria, hc.super_categoria
-                    FROM hierarquias_cat AS hc
-                    JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
-            ) SELECT *
-            FROM sub_categorias
-        ) AS aux
-        WHERE sub_categoria <> category);
+    (SELECT * FROM subcategories_of(category));
 BEGIN
     IF category IN (SELECT * FROM super_categoria) THEN
         OPEN subcategories_cursor;

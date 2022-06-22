@@ -28,7 +28,7 @@ def manage_categories():
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         query = "SELECT * FROM categoria;"
         cursor.execute(query)
-        return render_template("manage_categories.html", cursor=cursor, params=request.args)
+        return render_template("manage_categories.html", cursor=cursor)
     except Exception as e:
         return str(e)
     finally:
@@ -43,7 +43,7 @@ def insert_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.form["categoria"]
-        query = "START TRANSACTION; INSERT INTO categoria values (%s); INSERT INTO categoria_simples values (%s); COMMIT;"
+        query = "START TRANSACTION; INSERT INTO categoria VALUES (%s); INSERT INTO categoria_simples values (%s); COMMIT;"
         data = (categoria, categoria)
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
@@ -138,24 +138,8 @@ def list_subcategories():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         categoria = request.args["categoria"]
-        """
-        SELECT sub_categoria
-        FROM(
-            WITH RECURSIVE sub_categorias AS (
-                SELECT sub_categoria, super_categoria
-                FROM hierarquias_cat
-                WHERE sub_categoria = %s
-                UNION
-                    SELECT hc.sub_categoria, hc.super_categoria
-                    FROM hierarquias_cat AS hc
-                    JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
-            ) SELECT *
-            FROM sub_categorias
-        ) AS aux
-        WHERE sub_categoria <> %s;
-        """
-        query = "SELECT sub_categoria FROM (WITH RECURSIVE sub_categorias AS (SELECT sub_categoria, super_categoria FROM hierarquias_cat WHERE sub_categoria = %s UNION SELECT hc.sub_categoria, hc.super_categoria FROM hierarquias_cat AS hc JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria) SELECT * FROM sub_categorias) AS aux WHERE sub_categoria <> %s;"
-        data = (categoria, categoria)
+        query = "SELECT * FROM subcategories_of(%s)"
+        data = (categoria, )
         cursor.execute(query, data)
         return render_template("list_subcategories.html", cursor=cursor, params=request.args)
     except Exception as e:
