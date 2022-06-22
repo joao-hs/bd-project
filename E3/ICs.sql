@@ -52,29 +52,30 @@ FOR EACH ROW EXECUTE PROCEDURE max_units_proc();
 
 -- IC3 --
 CREATE TRIGGER verifica_categorias_trigger
-BEFORE INSERT ON prateleira
-EXECUTE PROCEDURE verifica_planograma();
+BEFORE INSERT ON evento_reposicao
+FOR EACH ROW EXECUTE PROCEDURE verifica_categoria_prateleira();
 
-CREATE OR REPLACE FUNCTION verifica_planograma() RETURNS TRIGGER AS $$
-DECLARE p_ean numeric(13);
+CREATE OR REPLACE FUNCTION verifica_categoria_prateleira() 
+RETURNS TRIGGER AS 
+$$
 DECLARE num_p numeric(2);
 DECLARE num_s numeric(13);
 DECLARE fab varchar(80);
-DECLARE unit numeric(4);
-DECLARE cursor_planogram CURSOR FOR
-    SELECT ean, num_prateleira, num_serie, fabricante,unidades FROM planograma;
+DECLARE nome_c varchar(80);
+DECLARE cursor_prateleira CURSOR FOR
+    SELECT num_prateleira, num_serie, fabricante, categoria_simples_nome FROM prateleira ;
 BEGIN
-    OPEN cursor_planogram;
+    OPEN cursor_prateleira;
     LOOP
-        FETCH cursor_planogram INTO p_ean, num_p, num_s, fab, unit;
+        FETCH cursor_prateleira INTO num_p, num_s, fab, nome_c;
         EXIT WHEN NOT FOUND;
         IF NEW.num_prateleira = num_p AND NEW.num_serie = num_s AND NEW.fabricante = fab THEN
-            IF NEW.categoria_nome NOT IN (SELECT categoria_nome FROM tem_categoria WHERE ean = NEW.ean) THEN
-                RAISE EXCEPTION 'bla bla'
+            IF nome_c NOT IN (SELECT categoria_simples_nome FROM tem_categoria WHERE ean = NEW.ean) THEN
+                RAISE EXCEPTION '(IC-5) Um Produto só pode ser reposto numa Prateleira que apresente (pelo menos) uma das Categorias desse produto';
             END IF;
         END IF;
     END LOOP;
-    CLOSE cursor_planogram;
+    CLOSE cursor_prateleira;
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
