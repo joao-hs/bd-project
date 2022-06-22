@@ -31,7 +31,7 @@ DECLARE cursor_planogram CURSOR FOR
 BEGIN
     OPEN cursor_planogram;     
     LOOP
-        FETCH cursor_planogram INTO p_ean, num_p, num_s, fab, unit;
+        FETCH FROM cursor_planogram INTO p_ean, num_p, num_s, fab, unit;
         EXIT WHEN NOT FOUND;
         IF NEW.ean = p_ean AND NEW.num_prateleira = num_p AND NEW.num_serie = num_s
         AND NEW.fabricante = fab THEN
@@ -47,7 +47,7 @@ $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER max_units_trigger
 BEFORE INSERT ON evento_reposicao
-EXECUTE PROCEDURE max_units_proc();
+FOR EACH ROW EXECUTE PROCEDURE max_units_proc();
 
 -- IC3 --
 CREATE TRIGGER verifica_categorias_trigger
