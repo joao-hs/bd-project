@@ -43,7 +43,7 @@ def insert_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.form["categoria"]
-        query = "INSERT INTO categoria values (%s); INSERT INTO categoria_simples values (%s);"
+        query = "START TRANSACTION; INSERT INTO categoria values (%s); INSERT INTO categoria_simples values (%s); COMMIT;"
         data = (categoria, categoria)
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
@@ -62,7 +62,7 @@ def remove_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.args["categoria"]
-        query = "DO $$ BEGIN PERFORM remove_category(%s); END $$ LANGUAGE plpgsql;"
+        query = "START TRANSACTION; DO $$ BEGIN PERFORM remove_category(%s); END $$ LANGUAGE plpgsql; COMMIT;"
         data = (categoria, )
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
