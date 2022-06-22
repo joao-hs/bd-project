@@ -40,7 +40,7 @@ create table produto
      categoria_simples_nome varchar(80) not null,
      descr varchar(50) not null,
      constraint pk_produto primary key(ean),
-     constraint fk_produto_categoria foreign key(categoria_simples_nome) references categoria_simples(categoria_simples_nome));
+     constraint fk_produto_categoria_simples foreign key(categoria_simples_nome) references categoria_simples(categoria_simples_nome));
 
 create table tem_categoria
     (ean numeric(13) not null,
@@ -71,10 +71,10 @@ create table prateleira
      num_serie numeric(13) not null,
      fabricante varchar(80) not null,
      altura numeric(3) not null,
-     categoria_nome varchar(80) not null,
+     categoria_simples_nome varchar(80) not null,
      constraint pk_prateleira primary key(num_prateleira, num_serie, fabricante),
      constraint fk_instalada_em_ivm foreign key(num_serie, fabricante) references ivm(num_serie, fabricante),
-     constraint fk_tem_categoria_categoria foreign key(categoria_nome) references categoria(categoria_nome));
+     constraint fk_tem_categoria_categoria_simples foreign key(categoria_simples_nome) references categoria(categoria_simples_nome));
 
 create table planograma
     (ean numeric(13) not null,
@@ -94,12 +94,10 @@ create table retalhista
      constraint pk_retalhista primary key(tin));
 
 create table responsavel_por
-    (categoria_nome varchar(80) not null,
-     tin numeric(13) not null,
+    (tin numeric(13) not null,
      num_serie numeric(13) not null,
      fabricante varchar(80) not null,
-     constraint pk_responsavel_por primary key(num_serie, fabricante, categoria_nome),
-     constraint fk_responsavel_por_categoria foreign key(categoria_nome) references categoria(categoria_nome),
+     constraint pk_responsavel_por primary key(num_serie, fabricante),
      constraint fk_responsavel_por_retalhista foreign key(tin) references retalhista(tin),
      constraint fk_responsavel_por_ivm foreign key(num_serie, fabricante) references ivm(num_serie, fabricante));
 
@@ -213,22 +211,22 @@ insert into instalada_em values (1111111111111, 'Instant Foodies inc', 'Farmáci
 insert into instalada_em values (1111111111000, 'Instant Foodies inc', 'BP Rua das Antas');
 
 
-insert into prateleira values (1, 1111111111000, 'Vending lda', 30, 'Bebida');
-insert into prateleira values (2, 1111111111000, 'Vending lda', 30, 'Comida');
-insert into prateleira values (3, 1111111111000, 'Vending lda', 30, 'Consumíveis');
-insert into prateleira values (1, 1222222222000, 'Vending lda', 30, 'Bebida');
-insert into prateleira values (2, 1222222222000, 'Vending lda', 30, 'Comida');
-insert into prateleira values (3, 1222222222000, 'Vending lda', 30, 'Consumíveis');
-insert into prateleira values (1, 1133333333000, 'Vending lda', 30, 'Bebida');
-insert into prateleira values (2, 1133333333000, 'Vending lda', 30, 'Comida');
-insert into prateleira values (3, 1133333333000, 'Vending lda', 30, 'Consumíveis');
-insert into prateleira values (1, 1114444444000, 'Vending lda', 30, 'Bebida');
-insert into prateleira values (2, 1114444444000, 'Vending lda', 30, 'Comida');
-insert into prateleira values (3, 1114444444000, 'Vending lda', 30, 'Consumíveis');
-insert into prateleira values (1, 1111111111111, 'Instant Foodies inc', 25, 'Bebida');
-insert into prateleira values (2, 1111111111111, 'Instant Foodies inc', 25, 'Comida');
-insert into prateleira values (1, 1111111111000, 'Instant Foodies inc', 25, 'Bebida');
-insert into prateleira values (2, 1111111111000, 'Instant Foodies inc', 25, 'Comida');
+insert into prateleira values (1, 1111111111000, 'Vending lda', 30, 'Bebida sem Gás');
+insert into prateleira values (2, 1111111111000, 'Vending lda', 30, 'Doces');
+insert into prateleira values (3, 1111111111000, 'Vending lda', 30, 'Gelo');
+insert into prateleira values (1, 1222222222000, 'Vending lda', 30, 'Refrigerante');
+insert into prateleira values (2, 1222222222000, 'Vending lda', 30, 'Doces');
+insert into prateleira values (3, 1222222222000, 'Vending lda', 30, 'Gelo');
+insert into prateleira values (1, 1133333333000, 'Vending lda', 30, 'Bebida sem Gás');
+insert into prateleira values (2, 1133333333000, 'Vending lda', 30, 'Bolachas');
+insert into prateleira values (3, 1133333333000, 'Vending lda', 30, 'Higiene');
+insert into prateleira values (1, 1114444444000, 'Vending lda', 30, 'Bebida sem Gás');
+insert into prateleira values (2, 1114444444000, 'Vending lda', 30, 'Bolachas');
+insert into prateleira values (3, 1114444444000, 'Vending lda', 30, 'Higiene');
+insert into prateleira values (1, 1111111111111, 'Instant Foodies inc', 25, 'Refrigerante');
+insert into prateleira values (2, 1111111111111, 'Instant Foodies inc', 25, 'Doces');
+insert into prateleira values (1, 1111111111000, 'Instant Foodies inc', 25, 'Bebida sem Gás');
+insert into prateleira values (2, 1111111111000, 'Instant Foodies inc', 25, 'Bolachas');
 
 
 -- insert into planograma values (ean, num_prateleira, num_serie, fabricante, faces, unidades, loc)
@@ -236,6 +234,8 @@ insert into planograma values (1111111111111, 1, 1111111111000, 'Vending lda', 1
 insert into planograma values (2222222222222, 1, 1111111111000, 'Vending lda', 2, 10, 'Fila B e C');
 insert into planograma values (3333333333333, 1, 1111111111000, 'Vending lda', 1, 5, 'Fila D');
 insert into planograma values (4444444444444, 1, 1111111111000, 'Vending lda', 2, 15, 'Fila D e E');
+insert into planograma values (5555555555555, 1, 1111111111000, 'Vending lda', 2, 15, 'Fila D e E');
+
 insert into planograma values (1111111111111, 1, 1222222222000, 'Vending lda', 1, 5, 'Fila A');
 insert into planograma values (2222222222222, 1, 1222222222000, 'Vending lda', 2, 10, 'Fila B e C');
 insert into planograma values (3333333333333, 1, 1222222222000, 'Vending lda', 1, 5, 'Fila D');
@@ -259,20 +259,20 @@ insert into retalhista values (9876543211111, 'Drinks & co');
 insert into retalhista values (9876543212222, 'Healthy Vending Food');
 insert into retalhista values (9876543213333, 'Unilever');
 
--- insert into responsavel_por values (categoria_nome, tin, num_serie, fabricante)
-insert into responsavel_por values ('Bebida', 9876543211111, 1111111111000, 'Vending lda');
-insert into responsavel_por values ('Refrigerante', 9876543211111, 1111111111000, 'Vending lda');
-insert into responsavel_por values ('Bebida sem Gás', 9876543212222, 1111111111000, 'Vending lda');
-insert into responsavel_por values ('Comida', 9876543212222, 1111111111000, 'Vending lda');
-insert into responsavel_por values ('Consumíveis', 9876543213333, 1111111111000, 'Vending lda');
+-- insert into responsavel_por values (tin, num_serie, fabricante)
+insert into responsavel_por values (9876543211111, 1111111111000, 'Vending lda');
+insert into responsavel_por values (9876543211111, 1111111111000, 'Vending lda');
+insert into responsavel_por values (9876543212222, 1111111111000, 'Vending lda');
+insert into responsavel_por values (9876543212222, 1111111111000, 'Vending lda');
+insert into responsavel_por values (9876543213333, 1111111111000, 'Vending lda');
 
-insert into responsavel_por values ('Refrigerante', 9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values ('Bebida sem Gás', 9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values ('Pastelaria', 9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values ('Doces', 9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values ('Bolachas', 9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values ('Outros', 9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values ('Gelo', 9876543213333, 1111111111110, 'Instant Foodies inc');
+insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
+insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
+insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
+insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
+insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
+insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
+insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
 
 -- se for preciso inserir mais entradas
 
