@@ -2,20 +2,21 @@
 -----------
 
 -- IC1 --
-CREATE TRIGGER category_check_trigger
-BEFORE INSERT ON tem_outra
-FOR EACH ROW EXECUTE PROCEDURE category_check_proc()
 
 CREATE OR REPLACE FUNCTION category_check_proc()
 RETURNS TRIGGER AS
 $$
 BEGIN
     IF NEW.super_categoria_nome = NEW.categoria_nome THEN
-        RAISE EXCEPTION '(IC-1) Uma Categoria não pode estar contida em si própria '
+        RAISE EXCEPTION '(IC-1) Uma Categoria não pode estar contida em si própria';
     END IF;
-
+    RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE TRIGGER category_check_trigger
+BEFORE INSERT ON tem_outra
+FOR EACH ROW EXECUTE PROCEDURE category_check_proc();
 
 -- IC2 --
 CREATE OR REPLACE FUNCTION max_units_proc()
