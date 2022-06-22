@@ -10,5 +10,5 @@ GROUP BY CUBE (dia_semana, concelho);
 SELECT concelho, cat, dia_semana, SUM ( unidades ) AS unidades_totais 
 FROM vendas 
 WHERE distrito = 'Lisboa'
-GROUP BY ROLLUP (concelho, cat, dia_semana);
+GROUP BY GROUPING SETS ((cat, concelho),(cat, dia_semana), (concelho), (cat), (dia_semana), ());
 
