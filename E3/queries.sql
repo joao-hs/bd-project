@@ -93,25 +93,12 @@ BEGIN
             FETCH subcategories_cursor INTO subcategory;
             EXIT WHEN NOT FOUND;
             -- Remover dos sitios onde uma super categoria apareceria
-            DELETE FROM responsavel_por WHERE (categoria_nome, num_serie, fabricante) IN (
-                SELECT rp.categoria_nome, rp.num_serie, rp.fabricante
-                FROM responsavel_por rp
-                JOIN categoria c ON rp.categoria_nome=c.categoria_nome
-                WHERE c.categoria_nome=subcategory
-            );
-            DELETE FROM prateleira WHERE categoria_nome=subcategory;
             DELETE FROM tem_outra WHERE categoria_nome=subcategory;
             DELETE FROM super_categoria WHERE super_categoria_nome=subcategory;
             DELETE FROM categoria WHERE categoria_nome=subcategory;
         END LOOP;
         CLOSE subcategories_cursor;
-        DELETE FROM responsavel_por WHERE (categoria_nome, num_serie, fabricante) IN (
-            SELECT rp.categoria_nome, rp.num_serie, rp.fabricante
-            FROM responsavel_por rp
-            JOIN categoria c ON rp.categoria_nome=c.categoria_nome
-            WHERE c.categoria_nome=category
-        );
-        DELETE FROM prateleira WHERE categoria_nome=category;
+        DELETE FROM prateleira WHERE categoria_simples_nome=category;
         DELETE FROM tem_outra WHERE categoria_nome=category;
         DELETE FROM super_categoria WHERE super_categoria_nome=category;
         DELETE FROM categoria WHERE categoria_nome=category;
@@ -135,13 +122,6 @@ BEGIN
         JOIN produto p ON tc.categoria_simples_nome=p.categoria_simples_nome
         WHERE p.categoria_simples_nome=category
     );
-    -- Remover as entradas de responsavel por com categoria principal "category"
-    DELETE FROM responsavel_por WHERE (categoria_nome, num_serie, fabricante) IN (
-        SELECT rp.categoria_nome, rp.num_serie, rp.fabricante
-        FROM responsavel_por rp
-        JOIN categoria c ON rp.categoria_nome=c.categoria_nome
-        WHERE c.categoria_nome=category
-    );
     -- Remover as entradas de planograma que tenham prateleiras de "category"
     --      e/ou produtos de "category"
     DELETE FROM planograma WHERE (ean, num_prateleira, num_serie, fabricante) IN (
@@ -149,10 +129,10 @@ BEGIN
         FROM prateleira sh JOIN planograma pl 
         ON sh.num_prateleira=pl.num_prateleira AND sh.num_serie=pl.num_serie AND sh.fabricante=pl.fabricante
         JOIN produto p ON pl.ean=p.ean
-        WHERE sh.categoria_nome=category OR p.categoria_simples_nome=category
+        WHERE sh.categoria_simples_nome=category OR p.categoria_simples_nome=category
     );
     -- Remover as entradas de prateleira de "category"
-    DELETE FROM prateleira WHERE categoria_nome=category;
+    DELETE FROM prateleira WHERE categoria_simples_nome=category;
     -- Remover todas as linhas em que "category" apareça como categoria de um produto
     DELETE FROM tem_categoria WHERE categoria_simples_nome=category;
     -- Remover produtos que participam em tem_categoria associados a "category"
