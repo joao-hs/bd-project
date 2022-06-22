@@ -261,17 +261,6 @@ insert into retalhista values (9876543213333, 'Unilever');
 
 -- insert into responsavel_por values (tin, num_serie, fabricante)
 insert into responsavel_por values (9876543211111, 1111111111000, 'Vending lda');
-insert into responsavel_por values (9876543211111, 1111111111000, 'Vending lda');
-insert into responsavel_por values (9876543212222, 1111111111000, 'Vending lda');
-insert into responsavel_por values (9876543212222, 1111111111000, 'Vending lda');
-insert into responsavel_por values (9876543213333, 1111111111000, 'Vending lda');
-
-insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
-insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
 insert into responsavel_por values (9876543213333, 1111111111110, 'Instant Foodies inc');
 
 -- se for preciso inserir mais entradas
