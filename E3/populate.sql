@@ -74,7 +74,7 @@ create table prateleira
      categoria_simples_nome varchar(80) not null,
      constraint pk_prateleira primary key(num_prateleira, num_serie, fabricante),
      constraint fk_instalada_em_ivm foreign key(num_serie, fabricante) references ivm(num_serie, fabricante),
-     constraint fk_tem_categoria_categoria_simples foreign key(categoria_simples_nome) references categoria(categoria_simples_nome));
+     constraint fk_tem_categoria_categoria_simples foreign key(categoria_simples_nome) references categoria_simples(categoria_simples_nome));
 
 create table planograma
     (ean numeric(13) not null,
