@@ -43,7 +43,7 @@ def get_ivm():
         cursor.close()
         dbConn.close()
 
-@app.route('/events')
+@app.route('/eventos')
 def list_events():
     dbConn=None
     cursor=None
@@ -52,7 +52,7 @@ def list_events():
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         num_serie = request.args["num_serie"]
         fabricante = request.args["fabricante"]
-        query = "SELECT categoria_nome, SUM(unidades) FROM evento_reposicao er JOIN produto p ON er.ean=p.ean WHERE num_serie = %s AND fabricante = %s GROUP BY categoria_nome;"
+        query = "SELECT categoria_simples_nome, SUM(unidades) FROM evento_reposicao er JOIN produto p ON er.ean=p.ean WHERE num_serie = %s AND fabricante = %s GROUP BY categoria_simples_nome;"
         data = (num_serie, fabricante)
         cursor.execute(query, data)
         return render_template("events.html", cursor=cursor, params=request.args)
@@ -70,9 +70,9 @@ def choose_category():
     try:
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        query = "SELECT super_categoria FROM hierarquias_cat;"
+        query = "SELECT DISTINCT super_categoria FROM hierarquias_cat WHERE super_categoria IS NOT NULL;"
         cursor.execute(query)
-        return render_template("categoria.html", cursor=cursor)
+        return render_template("category.html", cursor=cursor)
     except Exception as e:
         return str(e)
     finally:
@@ -80,7 +80,7 @@ def choose_category():
         dbConn.close()
 
 
-@app.route('/listar-subcategorias')
+@app.route('/listar-subcategorias', methods=["GET"])
 def list_subcategories():
     dbConn=None
     cursor=None
@@ -89,19 +89,23 @@ def list_subcategories():
         cursor = dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         categoria = request.args["categoria"]
         """
-        WITH RECURSIVE sub_categorias AS (
-            SELECT sub_categoria, super_categoria
-            FROM hierarquias_cat
-            WHERE sub_categoria = %s
-            UNION
-                SELECT hc.sub_categoria, hc.super_categoria
-                FROM hierarquias_cat AS hc
-                JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
-        ) SELECT *
-        FROM sub_categorias;
+        SELECT sub_categoria
+        FROM(
+            WITH RECURSIVE sub_categorias AS (
+                SELECT sub_categoria, super_categoria
+                FROM hierarquias_cat
+                WHERE sub_categoria = %s
+                UNION
+                    SELECT hc.sub_categoria, hc.super_categoria
+                    FROM hierarquias_cat AS hc
+                    JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
+            ) SELECT *
+            FROM sub_categorias
+        ) AS aux
+        WHERE sub_categoria <> %s;
         """
-        query = "WITH RECURSIVE sub_categorias AS (SELECT sub_categoria, super_categoria FROM hierarquias_cat WHERE sub_categoria = %s UNION SELECT hc.sub_categoria, hc.super_categoria FROM hierarquias_cat AS hc JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria) SELECT * FROM sub_categorias;"
-        data = (categoria,)
+        query = "SELECT sub_categoria FROM (WITH RECURSIVE sub_categorias AS (SELECT sub_categoria, super_categoria FROM hierarquias_cat WHERE sub_categoria = %s UNION SELECT hc.sub_categoria, hc.super_categoria FROM hierarquias_cat AS hc JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria) SELECT * FROM sub_categorias) AS aux WHERE sub_categoria <> %s;"
+        data = (categoria, categoria)
         cursor.execute(query, data)
         return render_template("list_subcategories.html", cursor=cursor, params=request.args)
     except Exception as e:
