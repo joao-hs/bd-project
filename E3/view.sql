@@ -10,7 +10,7 @@ CREATE VIEW Vendas(ean, cat, ano, trimestre, mes, dia_mes, dia_semana, distrito,
 AS
 SELECT
     rep_event.ean, 
-    has_cat.categoria_nome,
+    has_cat.categoria_simples_nome,
     to_char(instante, 'YYYY'),
     to_char(instante, 'Q'),
     to_char(instante, 'MM'),
