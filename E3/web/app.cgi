@@ -21,8 +21,58 @@ def menu():
 
 @app.route('/gerir-categorias')
 def manage_categories():
-    pass
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT * FROM categoria;"
+        cursor.execute(query)
+        return render_template("manage_categories.html", cursor=cursor, params=request.args)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
 
+@app.route('/inserir-categoria', methods=["POST"])
+def insert_category():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        categoria = request.args["categoria"]
+        query = "INSERT INTO categoria values (%s);"
+        data = (categoria, )
+        cursor.execute(query, data)
+        return query
+    except Exception as e:
+        return str(e)
+    finally:
+        dbConn.commit()
+        cursor.close()
+        dbConn.close()
+
+@app.route('/remover-categoria', methods=["GET"])
+def remove_category():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        categoria = request.args["categoria"]
+        query = "DO $$ BEGIN PERFORM remove_category(%s); END $$ LANGUAGE plpgsql;"
+        data = (categoria, )
+        cursor.execute(query, data)
+        return query
+    except Exception as e:
+        return str(e)
+    finally:
+        dbConn.commit()
+        cursor.close()
+        dbConn.close()
+    
 @app.route('/gerir-retalhistas')
 def manage_retailer():
     pass
