@@ -65,8 +65,20 @@ def list_events():
 
 @app.route('/categoria')
 def choose_category():
-    # query que lista super_categoria from hierarquias_cat
-    pass
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        query = "SELECT super_categoria FROM hierarquias_cat;"
+        cursor.execute(query)
+        return render_template("categoria.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
 
 @app.route('/listar-subcategorias')
 def list_subcategories():
@@ -76,7 +88,6 @@ def list_subcategories():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         categoria = request.args["categoria"]
-        
         """
         WITH RECURSIVE sub_categorias AS (
             SELECT sub_categoria, super_categoria
@@ -93,7 +104,11 @@ def list_subcategories():
         data = (categoria,)
         cursor.execute(query, data)
         return render_template("list_subcategories.html", cursor=cursor, params=request.args)
-
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
 
 #_____________________________________________________________
 
