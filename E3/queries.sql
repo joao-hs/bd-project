@@ -149,3 +149,10 @@ BEGIN
     DELETE FROM categoria WHERE categoria_nome=category;
 END
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION remove_retailer(IN tin INTEGER) RETURNS VOID AS
+$$
+BEGIN
+
+END
+$$ LANGUAGE plpgsql;
