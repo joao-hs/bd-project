@@ -135,6 +135,28 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION subcategories_of(IN category CHAR)
+RETURNS TABLE(sub_category VARCHAR) AS
+$$
+BEGIN
+    RETURN QUERY
+    (SELECT CAST(sub_categoria AS VARCHAR)
+    FROM (
+        WITH RECURSIVE sub_categorias AS (
+            SELECT sub_categoria, super_categoria
+            FROM hierarquias_cat
+            WHERE sub_categoria = category
+            UNION
+                SELECT hc.sub_categoria, hc.super_categoria
+                FROM hierarquias_cat AS hc
+                JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
+        ) SELECT *
+        FROM sub_categorias
+    ) AS aux
+    WHERE sub_categoria <> category);
+END
+$$ LANGUAGE plpgsql;
+
 CREATE OR REPLACE FUNCTION remove_retailer(IN tin INTEGER) RETURNS VOID AS
 $$
 BEGIN
