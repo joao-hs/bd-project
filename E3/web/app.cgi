@@ -199,4 +199,68 @@ def list_subcategories():
         cursor.close()
         dbConn.close()
 
+@app.route('/sql1')
+def sql1():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT retalhista_nome FROM (SELECT tin, COUNT(*) FROM responsavel_por GROUP BY tin HAVING COUNT(*) >= ALL (SELECT COUNT(*) FROM responsavel_por GROUP BY tin)) AS aux JOIN retalhista ON aux.tin=retalhista.tin;"
+        cursor.execute(query)
+        return render_template("sql1.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/sql2')
+def sql2():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT DISTINCT retalhista_nome FROM retalhista AS r JOIN responsavel_por AS rp ON r.tin = rp.tin JOIN prateleira AS p ON rp.fabricante = p.fabricante AND rp.num_serie = p.num_serie;"
+        cursor.execute(query)
+        return render_template("sql2.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+    
+@app.route('/sql3')
+def sql3():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "(SELECT ean FROM produto) EXCEPT (SELECT ean FROM evento_reposicao);"
+        cursor.execute(query)
+        return render_template("sql3.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+    
+@app.route('/sql4')
+def sql4():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT ean FROM (SELECT DISTINCT ean, tin FROM evento_reposicao)AS a GROUP BY ean HAVING COUNT(*) = 1;"
+        cursor.execute(query)
+        return render_template("sql4.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
 CGIHandler().run(app)
