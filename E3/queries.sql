@@ -16,6 +16,7 @@ FROM (
 
 
 -- 2 --
+
 SELECT DISTINCT retalhista_nome FROM
 retalhista AS r JOIN responsavel_por AS rp
 ON r.tin = rp.tin JOIN prateleira AS p 
