@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title> List accounts - Flask</title>
-    </head>
-    <body style="padding:20px">
-    {% if cursor %}
-        <table border="2px">
-            <thead>
-                <tr>
-                    <th>Conta</th>
-                    <th>Agência</th>
-                    <th>Saldo</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for record in cursor %}
-                <tr>
-                    <td>{{ record[0] }}</td>
-                    <td>{{ record[1] }}</td>
-                    <td>{{ record[2] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Erro: ao obter dados da base de dados!</p>
-    {% endif %}
-    </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Menu</title>
+  <meta name="description" content="Protótipo simples de interação com a base de dados">
+  <meta name="author" content="Grupo 86">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
+  <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
+
+</head>
+<body style="padding:20px">
+
+  <h1>Menu</h1>
+  <h3>Escolha uma das seguintes opções:</h3>
+  <ul>
+  <li><a href="gerir-categorias">Gerir Categorias</a></li>
+  <li><a href="gerir-retalhistas">Gerir Retalhistas</a></li>
+  <li><a href="ivm">Listar Eventos de reposição de uma IVM</a></li>
+  <li><a href="categoria">Listar Sub-Categorias</a></li>
+  <li><a href="sql">Consultas SQL</a></li>
+  </ul>
+
+</body>
 </html>
