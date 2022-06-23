@@ -43,7 +43,7 @@ def insert_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.form["categoria"]
-        query = "START TRANSACTION; INSERT INTO categoria VALUES (%s); INSERT INTO categoria_simples values (%s); COMMIT;"
+        query = "START TRANSACTION; INSERT INTO categoria VALUES (%s); INSERT INTO categoria_simples VALUES (%s); COMMIT;"
         data = (categoria, categoria)
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
@@ -72,7 +72,7 @@ def remove_category():
         dbConn.commit()
         cursor.close()
         dbConn.close()
-    
+
 @app.route('/gerir-retalhistas')
 def manage_retailer():
     dbConn=None
@@ -109,7 +109,7 @@ def insert_retailer():
         cursor.close()
         dbConn.close()
 
-@app.route('/remover-retalhista')
+@app.route('/remover-retalhista', methods=["GET"])
 def remove_retailer():
     dbConn=None
     cursor=None
@@ -144,7 +144,7 @@ def get_ivm():
         cursor.close()
         dbConn.close()
 
-@app.route('/eventos')
+@app.route('/eventos', methods=["GET"])
 def list_events():
     dbConn=None
     cursor=None
