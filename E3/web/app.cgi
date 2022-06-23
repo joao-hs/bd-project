@@ -263,4 +263,36 @@ def sql4():
         cursor.close()
         dbConn.close()
 
+@app.route('/olap1')
+def olap1():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT dia_semana, concelho, SUM ( unidades ) AS unidades_totais FROM vendas WHERE((CAST(ano AS int)*10000+CAST(mes AS int)*100+CAST(dia_mes AS int)) BETWEEN 20220201 AND 20230101) GROUP BY CUBE (dia_semana, concelho);"
+        cursor.execute(query)
+        return render_template("olap1.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/olap2')
+def olap2():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT concelho, cat, dia_semana, SUM ( unidades ) AS unidades_totais FROM vendas WHERE distrito = 'Lisboa' GROUP BY GROUPING SETS ((cat, concelho),(cat, dia_semana), (concelho), (cat), (dia_semana), ());"
+        cursor.execute(query)
+        return render_template("olap2.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
 CGIHandler().run(app)
