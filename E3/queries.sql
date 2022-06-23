@@ -144,9 +144,19 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION remove_retailer(IN tin INTEGER) RETURNS VOID AS
+CREATE OR REPLACE FUNCTION remove_retailer(IN r_tin NUMERIC(13)) RETURNS VOID AS
 $$
 BEGIN
-
+    DELETE FROM responsavel_por WHERE (num_serie, fabricante) IN (
+        SELECT num_serie, fabricante
+        FROM responsavel_por
+        WHERE tin=r_tin
+    );
+    DELETE FROM evento_reposicao WHERE (ean, num_prateleira, num_serie, fabricante, instante) IN (
+        SELECT ean, num_prateleira, num_serie, fabricante, instante
+        FROM evento_reposicao
+        WHERE tin=r_tin
+    );
+    DELETE FROM retalhista WHERE tin=r_tin;
 END
 $$ LANGUAGE plpgsql;

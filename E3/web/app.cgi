@@ -75,7 +75,58 @@ def remove_category():
     
 @app.route('/gerir-retalhistas')
 def manage_retailer():
-    pass
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT * FROM retalhista;"
+        cursor.execute(query)
+        return render_template("manage_retailers.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/inserir-retalhista', methods=["POST"])
+def insert_retailer():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        tin = request.form["tin"]
+        nome = request.form["nome"]
+        query = "START TRANSACTION; INSERT INTO retalhista VALUES (%s, %s); COMMIT;"
+        data = (tin, nome)
+        cursor.execute(query, data)
+        return render_template("landing_manage_retailers.html", params=query)
+    except Exception as e:
+        return str(e)
+    finally:
+        dbConn.commit()
+        cursor.close()
+        dbConn.close()
+
+@app.route('/remover-retalhista')
+def remove_retailer():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        tin = request.args["tin"]
+        query = "START TRANSACTION; DO $$ BEGIN PERFORM remove_retailer(%s); END $$ LANGUAGE plpgsql; COMMIT;"
+        data = (tin, )
+        cursor.execute(query, data)
+        return render_template("landing_manage_retailers.html", params=query)
+    except Exception as e:
+        return str(e)
+    finally:
+        dbConn.commit()
+        cursor.close()
+        dbConn.close()
 
 @app.route('/ivm')
 def get_ivm():
