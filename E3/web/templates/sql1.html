@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SQL</title>
+        <meta name="description" content="Protótipo simples de interação com a base de dados">
+        <meta name="author" content="Grupo 86">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
+        <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
+      
+    </head>
+    <body style="padding:20px">
+    <p><a href="menu">Menu</a></p>
+    {% if cursor %}
+        <h3>Nome do(s) retalhista(s) responsáveis pela reposição do maior número de categorias</h3>
+        <table border="2px">
+            <thead>
+                <tr>
+                    <th>Nome do Retalhista</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in cursor %}
+                    <tr>
+                        <td>{{ record[0] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <pre><code>
+SELECT retalhista_nome
+FROM (
+    SELECT tin, COUNT(*)
+    FROM responsavel_por
+    GROUP BY tin
+    HAVING COUNT(*) >= ALL (
+        SELECT COUNT(*)
+        FROM responsavel_por
+        GROUP BY tin
+    )
+) AS aux JOIN retalhista ON aux.tin=retalhista.tin;
+        </code></pre>
+    {% else %}
+        <p>Erro: não foi possível obter dados da base de dados!</p>
+    {% endif %}
+    </body>
+</html>
