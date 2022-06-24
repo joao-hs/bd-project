@@ -43,14 +43,15 @@ def insert_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.form["categoria"]
-        query = "START TRANSACTION; INSERT INTO categoria VALUES (%s); INSERT INTO categoria_simples VALUES (%s); COMMIT;"
+        query = "INSERT INTO categoria VALUES (%s); INSERT INTO categoria_simples VALUES (%s);"
         data = (categoria, categoria)
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
     except Exception as e:
         return str(e)
-    finally:
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
 
@@ -62,14 +63,15 @@ def remove_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.args["categoria"]
-        query = "START TRANSACTION; DO $$ BEGIN PERFORM remove_category(%s); END $$ LANGUAGE plpgsql; COMMIT;"
+        query = "DO $$ BEGIN PERFORM remove_category(%s); END $$ LANGUAGE plpgsql;"
         data = (categoria, )
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
     except Exception as e:
         return str(e)
-    finally:
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
 
@@ -98,14 +100,15 @@ def insert_retailer():
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         tin = request.form["tin"]
         nome = request.form["nome"]
-        query = "START TRANSACTION; INSERT INTO retalhista VALUES (%s, %s); COMMIT;"
+        query = "INSERT INTO retalhista VALUES (%s, %s);"
         data = (tin, nome)
         cursor.execute(query, data)
         return render_template("landing_manage_retailers.html", params=query)
     except Exception as e:
         return str(e)
-    finally:
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
 
@@ -117,14 +120,15 @@ def remove_retailer():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         tin = request.args["tin"]
-        query = "START TRANSACTION; DO $$ BEGIN PERFORM remove_retailer(%s); END $$ LANGUAGE plpgsql; COMMIT;"
+        query = "DO $$ BEGIN PERFORM remove_retailer(%s); END $$ LANGUAGE plpgsql;"
         data = (tin, )
         cursor.execute(query, data)
         return render_template("landing_manage_retailers.html", params=query)
     except Exception as e:
         return str(e)
-    finally:
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
 
@@ -230,7 +234,7 @@ def sql2():
     finally:
         cursor.close()
         dbConn.close()
-    
+
 @app.route('/sql3')
 def sql3():
     dbConn=None
@@ -246,7 +250,7 @@ def sql3():
     finally:
         cursor.close()
         dbConn.close()
-    
+
 @app.route('/sql4')
 def sql4():
     dbConn=None
@@ -309,8 +313,9 @@ def reset():
         return render_template("reset.html")
     except Exception as e:
        	return str(e)
-    finally:
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
 
