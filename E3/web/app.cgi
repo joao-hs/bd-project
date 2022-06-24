@@ -12,10 +12,10 @@ DB_CONNECTION_STRING = "host=%s dbname=%s user=%s password=%s" % (DB_HOST, DB_DA
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/menu')
 def menu():
     try:
-        render_template("index.html")
+        return render_template("index.html")
     except Exception as e:
         return str(e)
 
@@ -28,7 +28,7 @@ def manage_categories():
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         query = "SELECT * FROM categoria;"
         cursor.execute(query)
-        return render_template("manage_categories.html", cursor=cursor, params=request.args)
+        return render_template("manage_categories.html", cursor=cursor)
     except Exception as e:
         return str(e)
     finally:
@@ -43,14 +43,15 @@ def insert_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.form["categoria"]
-        query = "START TRANSACTION; INSERT INTO categoria values (%s); INSERT INTO categoria_simples values (%s); COMMIT;"
+        query = "INSERT INTO categoria VALUES (%s); INSERT INTO categoria_simples VALUES (%s);"
         data = (categoria, categoria)
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
     except Exception as e:
         return str(e)
-    finally:
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
 
@@ -62,20 +63,74 @@ def remove_category():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
         categoria = request.args["categoria"]
-        query = "START TRANSACTION; DO $$ BEGIN PERFORM remove_category(%s); END $$ LANGUAGE plpgsql; COMMIT;"
+        query = "DO $$ BEGIN PERFORM remove_category(%s); END $$ LANGUAGE plpgsql;"
         data = (categoria, )
         cursor.execute(query, data)
         return render_template("landing_manage_categories.html", params=query)
     except Exception as e:
         return str(e)
-    finally:
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
-    
+
 @app.route('/gerir-retalhistas')
 def manage_retailer():
-    pass
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT * FROM retalhista;"
+        cursor.execute(query)
+        return render_template("manage_retailers.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/inserir-retalhista', methods=["POST"])
+def insert_retailer():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        tin = request.form["tin"]
+        nome = request.form["nome"]
+        query = "INSERT INTO retalhista VALUES (%s, %s);"
+        data = (tin, nome)
+        cursor.execute(query, data)
+        return render_template("landing_manage_retailers.html", params=query)
+    except Exception as e:
+        return str(e)
+    else:
+        dbConn.commit()
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/remover-retalhista', methods=["GET"])
+def remove_retailer():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        tin = request.args["tin"]
+        query = "DO $$ BEGIN PERFORM remove_retailer(%s); END $$ LANGUAGE plpgsql;"
+        data = (tin, )
+        cursor.execute(query, data)
+        return render_template("landing_manage_retailers.html", params=query)
+    except Exception as e:
+        return str(e)
+    else:
+        dbConn.commit()
+    finally:
+        cursor.close()
+        dbConn.close()
 
 @app.route('/ivm')
 def get_ivm():
@@ -93,7 +148,7 @@ def get_ivm():
         cursor.close()
         dbConn.close()
 
-@app.route('/eventos')
+@app.route('/eventos', methods=["GET"])
 def list_events():
     dbConn=None
     cursor=None
@@ -138,24 +193,8 @@ def list_subcategories():
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         categoria = request.args["categoria"]
-        """
-        SELECT sub_categoria
-        FROM(
-            WITH RECURSIVE sub_categorias AS (
-                SELECT sub_categoria, super_categoria
-                FROM hierarquias_cat
-                WHERE sub_categoria = %s
-                UNION
-                    SELECT hc.sub_categoria, hc.super_categoria
-                    FROM hierarquias_cat AS hc
-                    JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
-            ) SELECT *
-            FROM sub_categorias
-        ) AS aux
-        WHERE sub_categoria <> %s;
-        """
-        query = "SELECT sub_categoria FROM (WITH RECURSIVE sub_categorias AS (SELECT sub_categoria, super_categoria FROM hierarquias_cat WHERE sub_categoria = %s UNION SELECT hc.sub_categoria, hc.super_categoria FROM hierarquias_cat AS hc JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria) SELECT * FROM sub_categorias) AS aux WHERE sub_categoria <> %s;"
-        data = (categoria, categoria)
+        query = "SELECT * FROM subcategories_of(%s)"
+        data = (categoria, )
         cursor.execute(query, data)
         return render_template("list_subcategories.html", cursor=cursor, params=request.args)
     except Exception as e:
@@ -164,66 +203,120 @@ def list_subcategories():
         cursor.close()
         dbConn.close()
 
-#_____________________________________________________________
-
-@app.route('/list_accounts')
-def list_accounts():
+@app.route('/sql1')
+def sql1():
     dbConn=None
     cursor=None
     try:
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
-        query = "SELECT * FROM account;"
+        query = "SELECT retalhista_nome FROM (SELECT tin, COUNT(*) FROM responsavel_por GROUP BY tin HAVING COUNT(*) >= ALL (SELECT COUNT(*) FROM responsavel_por GROUP BY tin)) AS aux JOIN retalhista ON aux.tin=retalhista.tin;"
         cursor.execute(query)
-        return render_template("index.html", cursor=cursor)
+        return render_template("sql1.html", cursor=cursor)
     except Exception as e:
         return str(e)
     finally:
         cursor.close()
         dbConn.close()
 
-@app.route('/accounts')
-def list_accounts_edit():
+@app.route('/sql2')
+def sql2():
     dbConn=None
     cursor=None
     try:
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
-        query = "SELECT account_number, branch_name, balance FROM account;"
+        query = "SELECT DISTINCT retalhista_nome FROM retalhista AS r JOIN responsavel_por AS rp ON r.tin = rp.tin JOIN prateleira AS p ON rp.fabricante = p.fabricante AND rp.num_serie = p.num_serie;"
         cursor.execute(query)
-        return render_template("accounts.html", cursor=cursor)
+        return render_template("sql2.html", cursor=cursor)
     except Exception as e:
         return str(e)
     finally:
         cursor.close()
         dbConn.close()
 
-@app.route('/balance')
-def change_balance():
-    try:
-        return render_template("balance.html", params=request.args)
-    except Exception as e:
-        return str(e)
-
-@app.route('/update', methods=["POST"])
-def update_balance():
+@app.route('/sql3')
+def sql3():
     dbConn=None
     cursor=None
     try:
         dbConn = psycopg2.connect(DB_CONNECTION_STRING)
         cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
-        balance=request.form["balance"]
-        account_number=request.form["account_number"]
-        query = "UPDATE account SET balance=%s WHERE account_number=%s"
-        data=(balance,account_number)
-        cursor.execute(query, data)
-        return query
+        query = "(SELECT ean FROM produto) EXCEPT (SELECT ean FROM evento_reposicao);"
+        cursor.execute(query)
+        return render_template("sql3.html", cursor=cursor)
     except Exception as e:
         return str(e)
     finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/sql4')
+def sql4():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT ean FROM (SELECT DISTINCT ean, tin FROM evento_reposicao)AS a GROUP BY ean HAVING COUNT(*) = 1;"
+        cursor.execute(query)
+        return render_template("sql4.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/olap1')
+def olap1():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT dia_semana, concelho, SUM ( unidades ) AS unidades_totais FROM vendas WHERE((CAST(ano AS int)*10000+CAST(mes AS int)*100+CAST(dia_mes AS int)) BETWEEN 20220201 AND 20230101) GROUP BY CUBE (dia_semana, concelho);"
+        cursor.execute(query)
+        return render_template("olap1.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/olap2')
+def olap2():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        query = "SELECT concelho, cat, dia_semana, SUM ( unidades ) AS unidades_totais FROM vendas WHERE distrito = 'Lisboa' GROUP BY GROUPING SETS ((cat, concelho),(cat, dia_semana), (concelho), (cat), (dia_semana), ());"
+        cursor.execute(query)
+        return render_template("olap2.html", cursor=cursor)
+    except Exception as e:
+        return str(e)
+    finally:
+        cursor.close()
+        dbConn.close()
+
+@app.route('/reset')
+def reset():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        f = open("reset.sql", "r")
+        lines = f.readlines()
+        for query in lines:
+           cursor.execute(query)
+        return render_template("reset.html")
+    except Exception as e:
+       	return str(e)
+    else:
         dbConn.commit()
+    finally:
         cursor.close()
         dbConn.close()
-
 
 CGIHandler().run(app)

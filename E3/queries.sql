@@ -16,6 +16,7 @@ FROM (
 
 
 -- 2 --
+
 SELECT DISTINCT retalhista_nome FROM
 retalhista AS r JOIN responsavel_por AS rp
 ON r.tin = rp.tin JOIN prateleira AS p 
@@ -47,20 +48,7 @@ CREATE OR REPLACE FUNCTION remove_category(IN category CHAR) RETURNS VOID AS
 $$
 DECLARE subcategory CHAR(80) DEFAULT '';
 DECLARE subcategories_cursor CURSOR FOR
-    (SELECT sub_categoria
-        FROM(
-            WITH RECURSIVE sub_categorias AS (
-                SELECT sub_categoria, super_categoria
-                FROM hierarquias_cat
-                WHERE sub_categoria = category
-                UNION
-                    SELECT hc.sub_categoria, hc.super_categoria
-                    FROM hierarquias_cat AS hc
-                    JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
-            ) SELECT *
-            FROM sub_categorias
-        ) AS aux
-        WHERE sub_categoria <> category);
+    (SELECT * FROM subcategories_of(category));
 BEGIN
     IF category IN (SELECT * FROM super_categoria) THEN
         OPEN subcategories_cursor;
@@ -135,9 +123,41 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION remove_retailer(IN tin INTEGER) RETURNS VOID AS
+CREATE OR REPLACE FUNCTION subcategories_of(IN category CHAR)
+RETURNS TABLE(sub_category VARCHAR) AS
 $$
 BEGIN
+    RETURN QUERY
+    (SELECT CAST(sub_categoria AS VARCHAR)
+    FROM (
+        WITH RECURSIVE sub_categorias AS (
+            SELECT sub_categoria, super_categoria
+            FROM hierarquias_cat
+            WHERE sub_categoria = category
+            UNION
+                SELECT hc.sub_categoria, hc.super_categoria
+                FROM hierarquias_cat AS hc
+                JOIN sub_categorias sc ON sc.sub_categoria=hc.super_categoria
+        ) SELECT *
+        FROM sub_categorias
+    ) AS aux
+    WHERE sub_categoria <> category);
+END
+$$ LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION remove_retailer(IN r_tin NUMERIC(13)) RETURNS VOID AS
+$$
+BEGIN
+    DELETE FROM responsavel_por WHERE (num_serie, fabricante) IN (
+        SELECT num_serie, fabricante
+        FROM responsavel_por
+        WHERE tin=r_tin
+    );
+    DELETE FROM evento_reposicao WHERE (ean, num_prateleira, num_serie, fabricante, instante) IN (
+        SELECT ean, num_prateleira, num_serie, fabricante, instante
+        FROM evento_reposicao
+        WHERE tin=r_tin
+    );
+    DELETE FROM retalhista WHERE tin=r_tin;
 END
 $$ LANGUAGE plpgsql;

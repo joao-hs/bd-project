@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title> List categories - Flask</title>
+        <title> List retailers - Flask</title>
         <meta name="description" content="Protótipo simples de interação com a base de dados">
         <meta name="author" content="Grupo 86">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,11 +13,12 @@
     <body style="padding:20px">
     <p><a href="menu">Menu</a></p>
     {% if cursor %}
-    <h3>Lista de Super Categorias</h3>
+    <h3>Lista de Retalhistas</h3>
         <table border="2px">
             <thead>
                 <tr>
-                    <th>Super Categoria</th>
+                    <th>TIN</th>
+                    <th>Nome</th>
                     <th> </th>
                 </tr>
             </thead>
@@ -25,11 +26,18 @@
                 {% for record in cursor %}
                 <tr>
                     <td>{{ record[0] }}</td>
-                    <td><a href="listar-subcategorias?categoria={{ record[0] }}">Listar</a></td>
+                    <td>{{ record[1] }}</td>
+                    <td> <a href="remover-retalhista?tin={{ record[0] }}">Apagar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+    <h3> Inserir Novo Retalhista</h3>
+    <form action="inserir-retalhista" method="post">
+        <p>Nome: <input type="text" name="nome"/></p>
+        <p>TIN: <input type="text" name="tin"/></p>
+        <p><input type="submit" value="Inserir"/></p>
+    </form>
     {% else %}
         <p>Erro: ao obter dados da base de dados!</p>
     {% endif %}
