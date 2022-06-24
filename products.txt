@@ -1,0 +1,175 @@
+insert into produto values (8277017071665, 'Águas', 'Luso');
+insert into produto values (5344744972884, 'Águas', 'Vitalis');
+insert into produto values (1468742349281, 'Águas', 'Voss');
+insert into produto values (6933349746483, 'Águas', 'Evian');
+insert into produto values (3624127013048, 'Águas', 'Água das Pedras');
+insert into produto values (7436239398082, 'Águas', 'Healsi');
+insert into produto values (6695451872988, 'Águas', 'Friz');
+insert into produto values (9309433720727, 'Águas', 'Monchique');
+
+insert into produto values (4364545572541, 'Laticinios', 'Leite Gordo');
+insert into produto values (8004343337244, 'Laticinios', 'Leite Meio-Gordo');
+insert into produto values (1792119494879, 'Laticinios', 'Leite Magro');
+insert into produto values (1786796992737, 'Laticinios', 'Ucal');
+insert into produto values (4773510772361, 'Laticinios', 'Leite Morango');
+insert into produto values (4507514029325, 'Laticinios', 'Leite Baunilha');
+insert into produto values (2393828982064, 'Laticinios', 'Leite Banana');
+insert into produto values (7990558838340, 'Laticinios', 'Leite Amendoa');
+insert into produto values (4120646065829, 'Laticinios', 'Leite Soja');
+insert into produto values (9148643601559, 'Laticinios', 'Leite Aveia');
+
+insert into produto values (1970399813258, 'Refrigerantes', 'Coca-Cola');
+insert into produto values (1415920407258, 'Refrigerantes', 'Pepsi');
+insert into produto values (9436423843998, 'Refrigerantes', 'Ice Tea Limão');
+insert into produto values (4116446086554, 'Refrigerantes', 'Sumol Laranja');
+insert into produto values (4007856375212, 'Refrigerantes', 'Ice Tea Manga');
+insert into produto values (1591885619623, 'Refrigerantes', 'Ice Tea Pessego');
+insert into produto values (7949296596870, 'Refrigerantes', '7-up');
+insert into produto values (9056373519185, 'Refrigerantes', 'Sumol Ananás');
+insert into produto values (7862531865560, 'Refrigerantes', 'Fanta');
+
+insert into produto values (5845675049179, 'Bebidas Energéticas', 'Redbull');
+insert into produto values (8995534805862, 'Bebidas Energéticas', 'Redbull s/açucar');
+insert into produto values (9972128589711, 'Bebidas Energéticas', 'Redbull Açaí');
+insert into produto values (3433756858371, 'Bebidas Energéticas', 'Monster');
+insert into produto values (5778006673339, 'Bebidas Energéticas', 'Burn');
+insert into produto values (5422437870366, 'Bebidas Energéticas', 'Power+');
+
+insert into produto values (6322066117311, 'Sumos', 'Compal Pera');
+insert into produto values (4838583824881, 'Sumos', 'Compal Pessego');
+insert into produto values (3004067520289, 'Sumos', 'Compal Manga');
+insert into produto values (7867281547047, 'Sumos', 'Bongo');
+insert into produto values (1388502170230, 'Sumos', 'Compal Laranja');
+insert into produto values (2512806864646, 'Sumos', 'Sumo Laranja');
+insert into produto values (8564323381223, 'Sumos', 'Limonada');
+insert into produto values (3006258109754, 'Sumos', 'Sumo Frutos Vermelhos');
+insert into produto values (1588368862294, 'Sumos', 'Compal Maçã');
+
+insert into produto values (2972633052179, 'Bebidas  Alcoólicas', 'Sagres');
+insert into produto values (1961762608074, 'Bebidas  Alcoólicas', 'Heineken');
+insert into produto values (1943670441172, 'Bebidas  Alcoólicas', 'Super Bock');
+insert into produto values (1985742792864, 'Bebidas  Alcoólicas', 'Sommersby');
+insert into produto values (3410536415212, 'Bebidas  Alcoólicas', 'Sommersby Frutos Vermelhos');
+insert into produto values (7609421540708, 'Bebidas  Alcoólicas', 'Bandida do Pomar');
+insert into produto values (5603455607276, 'Bebidas  Alcoólicas', 'Heineken Silver');
+insert into produto values (9743550131525, 'Bebidas  Alcoólicas', 'Crystal');
+insert into produto values (2966486261635, 'Bebidas  Alcoólicas', 'Argos');
+insert into produto values (6832765095131, 'Bebidas  Alcoólicas', 'Vinho Tinto');
+insert into produto values (8030185700094, 'Bebidas  Alcoólicas', 'Sangria');
+
+insert into produto values (1767913590362, 'Cafés', 'Starbucks Latte');
+insert into produto values (8951474757057, 'Cafés', 'Starbucks Latte Caramelo');
+insert into produto values (4578369174019, 'Cafés', 'Go Chill Latte');
+insert into produto values (1083824667588, 'Cafés', 'Go Chill Latte Caramelo');
+insert into produto values (4363392137051, 'Cafés', 'Go Chill Latte Aveia');
+
+insert into produto values (1625550139699, 'Chás e Chocolates', 'Chocolate Quente');
+insert into produto values (4161276977659, 'Chás e Chocolates', 'Chocolate Branco Quente');
+insert into produto values (4872647741072, 'Chás e Chocolates', 'Chá Verde');
+insert into produto values (1071900184324, 'Chás e Chocolates', 'Matcha');
+insert into produto values (2419370101677, 'Chás e Chocolates', 'Chá Preto');
+
+insert into produto values (5311121102624, 'Enlatados', 'Atum Tenorio');
+insert into produto values (7940229787025, 'Enlatados', 'Atum');
+insert into produto values (2453609540508, 'Enlatados', 'Salsichas');
+insert into produto values (5243209551946, 'Enlatados', 'Salsichas Aves');
+insert into produto values (5775680912367, 'Enlatados', 'Salsichas Vegan');
+
+insert into produto values (2340891527939, 'Frutas', 'Banana');
+insert into produto values (6471869716982, 'Frutas', 'Maçã');
+insert into produto values (5739588863582, 'Frutas', 'Ananás');
+insert into produto values (5701128114035, 'Frutas', 'Pera');
+insert into produto values (8394027391764, 'Frutas', 'Melancia');
+insert into produto values (8165576689366, 'Frutas', 'Uvas');
+insert into produto values (7813862519536, 'Frutas', 'Pessego');
+
+insert into produto values (8940554794292, 'Bolachas', 'Oreos');
+insert into produto values (3759784226315, 'Bolachas', 'Tuc');
+insert into produto values (2573778806042, 'Bolachas', 'Tuc Presunto');
+insert into produto values (8613107322864, 'Bolachas', 'Bolachas Agua e Sal');
+insert into produto values (3345786165241, 'Bolachas', 'Philipinos');
+insert into produto values (7362307416070, 'Bolachas', 'Bolachas Digestivas');
+
+insert into produto values (1519997189837, 'Chocolates', 'M&M');
+insert into produto values (7917634690250, 'Chocolates', 'M&M amendoim');
+insert into produto values (5985409804091, 'Chocolates', 'M&M crispy');
+insert into produto values (8377810473507, 'Chocolates', 'Kinder Bueno');
+insert into produto values (5684394684188, 'Chocolates', 'Kinder Delice');
+insert into produto values (8653781909919, 'Chocolates', 'Maltesers');
+insert into produto values (6227218275617, 'Chocolates', 'Snickers');
+insert into produto values (5788004280332, 'Chocolates', 'Twix');
+insert into produto values (7883969941806, 'Chocolates', 'Mars');
+insert into produto values (1052886131386, 'Chocolates', 'Smarties');
+insert into produto values (2510353769360, 'Chocolates', 'Kinder');
+insert into produto values (7845004830427, 'Chocolates', 'Bounty');
+
+insert into produto values (5248846151702, 'Gomas', 'Haribo Ursos');
+insert into produto values (2987948307130, 'Gomas', 'Haribo Starmix');
+insert into produto values (7878616034728, 'Gomas', 'Haribo Favoritos');
+insert into produto values (8450196743835, 'Gomas', 'Haribo Happy Cola');
+insert into produto values (2479220216657, 'Gomas', 'Haribo Marshmallows');
+insert into produto values (7403498365885, 'Gomas', 'Haribo Spaghetti');
+insert into produto values (2149472099442, 'Gomas', 'Vidal Melancias');
+insert into produto values (2348262137248, 'Gomas', 'Vidal Sortido');
+insert into produto values (6603850730999, 'Gomas', 'Vidal Rainbow Belts');
+
+insert into produto values (3125750693139, 'Batatas Fritas', 'Lays Gourmet');
+insert into produto values (9625587832897, 'Batatas Fritas', 'Lays Light');
+insert into produto values (5403360903101, 'Batatas Fritas', 'Lays Forno');
+insert into produto values (6219541830862, 'Batatas Fritas', 'Ruffles Original');
+insert into produto values (6514243268757, 'Batatas Fritas', 'Lays Original');
+insert into produto values (8616611752094, 'Batatas Fritas', 'Pringles');
+insert into produto values (2284344530635, 'Batatas Fritas', 'Pringles Paprika');
+insert into produto values (8439455499278, 'Batatas Fritas', 'Pringles Sour Cream');
+
+insert into produto values (5459415942837, 'Sandes', 'Sandes Queijo');
+insert into produto values (6650262439477, 'Sandes', 'Sandes Queijo e Fiambre');
+insert into produto values (4087699796587, 'Sandes', 'Sandes Presunto');
+insert into produto values (8118918266130, 'Sandes', 'Hamburguer');
+insert into produto values (1085234046721, 'Sandes', 'Hot Dog');
+insert into produto values (1555053245786, 'Sandes', 'Hamburguer Queijo');
+insert into produto values (9584833690590, 'Sandes', 'Sandes Vegan');
+
+insert into produto values (8533636365161, 'Bolos', 'Waffle');
+insert into produto values (2505292620512, 'Bolos', 'Waffle Chocolate');
+insert into produto values (5947269556256, 'Bolos', 'Croissant Chocolate');
+insert into produto values (1041036705095, 'Bolos', 'Croissant Creme');
+insert into produto values (5932150501379, 'Bolos', 'Bolo Chocolate');
+insert into produto values (6025014063287, 'Bolos', 'Bolo Cenoura');
+insert into produto values (1025943703805, 'Bolos', 'Donut');
+insert into produto values (5846218715704, 'Bolos', 'Donut Chocolate');
+
+insert into produto values (3988656542326, 'Salgados', 'Folhado Misto');
+insert into produto values (6075239865358, 'Salgados', 'Croquete');
+insert into produto values (2360325987130, 'Salgados', 'Croquete Espinafres');
+insert into produto values (9449159705966, 'Salgados', 'Folhado Espinafres');
+insert into produto values (8364840225124, 'Salgados', 'Folhado Pizza');
+insert into produto values (1284354657704, 'Salgados', 'Pizza Queijo');
+insert into produto values (8776563521432, 'Salgados', 'Pizza Queijo e Fiambre');
+insert into produto values (5493181691267, 'Salgados', 'Pão com Choriço');
+
+insert into produto values (7154465797509, 'Higiene e Saude', 'Lenços');
+insert into produto values (8519339191682, 'Higiene e Saude', 'Lenços Perfumados');
+insert into produto values (1517011948532, 'Higiene e Saude', 'Máscaras Cirugicas');
+insert into produto values (3892977199091, 'Higiene e Saude', 'Teste Covid-19');
+insert into produto values (3418608887277, 'Higiene e Saude', 'Gel Desinfetante');
+insert into produto values (1528910470243, 'Higiene e Saude', 'Repelente Mosquitos');
+insert into produto values (1746191137346, 'Higiene e Saude', 'Fralda');
+insert into produto values (1675328415728, 'Higiene e Saude', 'Toalhitas Humidas');
+insert into produto values (3124727371836, 'Higiene e Saude', 'Algodão');
+insert into produto values (5452149204981, 'Higiene e Saude', 'Álcool');
+insert into produto values (5292599744895, 'Higiene e Saude', 'Betadine');
+
+insert into produto values (0321302005519, 'Papelaria', 'Canetas Pretas');
+insert into produto values (4176419843554, 'Papelaria', 'Canetas Azuis');
+insert into produto values (3507797043457, 'Papelaria', 'Canetas Mix');
+insert into produto values (3705347281078, 'Papelaria', 'Lapis');
+insert into produto values (8870652112264, 'Papelaria', 'Borrachas');
+insert into produto values (1111538823771, 'Papelaria', 'Corretor');
+
+insert into produto values (2888818377511, 'Gelo', 'Gelo instantaneo');
+
+insert into produto values (1111111111111, 'Pastilhas', 'Tridente Menta');
+insert into produto values (1111111111111, 'Pastilhas', 'Tridente Morango');
+insert into produto values (1111111111111, 'Pastilhas', 'Tridente Oral-B');
+insert into produto values (1111111111111, 'Pastilhas', 'Tridente Frutos Vermelhos');
