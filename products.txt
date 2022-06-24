@@ -45,17 +45,17 @@ insert into produto values (8564323381223, 'Sumos', 'Limonada');
 insert into produto values (3006258109754, 'Sumos', 'Sumo Frutos Vermelhos');
 insert into produto values (1588368862294, 'Sumos', 'Compal Maçã');
 
-insert into produto values (2972633052179, 'Bebidas  Alcoólicas', 'Sagres');
-insert into produto values (1961762608074, 'Bebidas  Alcoólicas', 'Heineken');
-insert into produto values (1943670441172, 'Bebidas  Alcoólicas', 'Super Bock');
-insert into produto values (1985742792864, 'Bebidas  Alcoólicas', 'Sommersby');
-insert into produto values (3410536415212, 'Bebidas  Alcoólicas', 'Sommersby Frutos Vermelhos');
-insert into produto values (7609421540708, 'Bebidas  Alcoólicas', 'Bandida do Pomar');
-insert into produto values (5603455607276, 'Bebidas  Alcoólicas', 'Heineken Silver');
-insert into produto values (9743550131525, 'Bebidas  Alcoólicas', 'Crystal');
-insert into produto values (2966486261635, 'Bebidas  Alcoólicas', 'Argos');
-insert into produto values (6832765095131, 'Bebidas  Alcoólicas', 'Vinho Tinto');
-insert into produto values (8030185700094, 'Bebidas  Alcoólicas', 'Sangria');
+insert into produto values (2972633052179, 'Bebidas Alcoólicas', 'Sagres');
+insert into produto values (1961762608074, 'Bebidas Alcoólicas', 'Heineken');
+insert into produto values (1943670441172, 'Bebidas Alcoólicas', 'Super Bock');
+insert into produto values (1985742792864, 'Bebidas Alcoólicas', 'Sommersby');
+insert into produto values (3410536415212, 'Bebidas Alcoólicas', 'Sommersby Frutos Vermelhos');
+insert into produto values (7609421540708, 'Bebidas Alcoólicas', 'Bandida do Pomar');
+insert into produto values (5603455607276, 'Bebidas Alcoólicas', 'Heineken Silver');
+insert into produto values (9743550131525, 'Bebidas Alcoólicas', 'Crystal');
+insert into produto values (2966486261635, 'Bebidas Alcoólicas', 'Argos');
+insert into produto values (6832765095131, 'Bebidas Alcoólicas', 'Vinho Tinto');
+insert into produto values (8030185700094, 'Bebidas Alcoólicas', 'Sangria');
 
 insert into produto values (1767913590362, 'Cafés', 'Starbucks Latte');
 insert into produto values (8951474757057, 'Cafés', 'Starbucks Latte Caramelo');

@@ -1,0 +1,175 @@
+insert into tem_categoria values (8277017071665, 'Águas');
+insert into tem_categoria values (5344744972884, 'Águas');
+insert into tem_categoria values (1468742349281, 'Águas');
+insert into tem_categoria values (6933349746483, 'Águas');
+insert into tem_categoria values (3624127013048, 'Águas');
+insert into tem_categoria values (7436239398082, 'Águas');
+insert into tem_categoria values (6695451872988, 'Águas');
+insert into tem_categoria values (9309433720727, 'Águas');
+
+insert into tem_categoria values (4364545572541, 'Laticinios');
+insert into tem_categoria values (8004343337244, 'Laticinios');
+insert into tem_categoria values (1792119494879, 'Laticinios');
+insert into tem_categoria values (1786796992737, 'Laticinios');
+insert into tem_categoria values (4773510772361, 'Laticinios');
+insert into tem_categoria values (4507514029325, 'Laticinios');
+insert into tem_categoria values (2393828982064, 'Laticinios');
+insert into tem_categoria values (7990558838340, 'Laticinios');
+insert into tem_categoria values (4120646065829, 'Laticinios');
+insert into tem_categoria values (9148643601559, 'Laticinios');
+
+insert into tem_categoria values (1970399813258, 'Refrigerantes');
+insert into tem_categoria values (1415920407258, 'Refrigerantes');
+insert into tem_categoria values (9436423843998, 'Refrigerantes');
+insert into tem_categoria values (4116446086554, 'Refrigerantes');
+insert into tem_categoria values (4007856375212, 'Refrigerantes');
+insert into tem_categoria values (1591885619623, 'Refrigerantes');
+insert into tem_categoria values (7949296596870, 'Refrigerantes');
+insert into tem_categoria values (9056373519185, 'Refrigerantes');
+insert into tem_categoria values (7862531865560, 'Refrigerantes');
+
+insert into tem_categoria values (5845675049179, 'Bebidas Energéticas');
+insert into tem_categoria values (8995534805862, 'Bebidas Energéticas');
+insert into tem_categoria values (9972128589711, 'Bebidas Energéticas');
+insert into tem_categoria values (3433756858371, 'Bebidas Energéticas');
+insert into tem_categoria values (5778006673339, 'Bebidas Energéticas');
+insert into tem_categoria values (5422437870366, 'Bebidas Energéticas');
+
+insert into tem_categoria values (6322066117311, 'Sumos');
+insert into tem_categoria values (4838583824881, 'Sumos');
+insert into tem_categoria values (3004067520289, 'Sumos');
+insert into tem_categoria values (7867281547047, 'Sumos');
+insert into tem_categoria values (1388502170230, 'Sumos');
+insert into tem_categoria values (2512806864646, 'Sumos');
+insert into tem_categoria values (8564323381223, 'Sumos');
+insert into tem_categoria values (3006258109754, 'Sumos');
+insert into tem_categoria values (1588368862294, 'Sumos');
+
+insert into tem_categoria values (2972633052179, 'Bebidas Alcoólicas');
+insert into tem_categoria values (1961762608074, 'Bebidas Alcoólicas');
+insert into tem_categoria values (1943670441172, 'Bebidas Alcoólicas');
+insert into tem_categoria values (1985742792864, 'Bebidas Alcoólicas');
+insert into tem_categoria values (3410536415212, 'Bebidas Alcoólicas');
+insert into tem_categoria values (7609421540708, 'Bebidas Alcoólicas');
+insert into tem_categoria values (5603455607276, 'Bebidas Alcoólicas');
+insert into tem_categoria values (9743550131525, 'Bebidas Alcoólicas');
+insert into tem_categoria values (2966486261635, 'Bebidas Alcoólicas');
+insert into tem_categoria values (6832765095131, 'Bebidas Alcoólicas');
+insert into tem_categoria values (8030185700094, 'Bebidas Alcoólicas');
+
+insert into tem_categoria values (1767913590362, 'Cafés');
+insert into tem_categoria values (8951474757057, 'Cafés');
+insert into tem_categoria values (4578369174019, 'Cafés');
+insert into tem_categoria values (1083824667588, 'Cafés');
+insert into tem_categoria values (4363392137051, 'Cafés');
+
+insert into tem_categoria values (1625550139699, 'Chás e Chocolates');
+insert into tem_categoria values (4161276977659, 'Chás e Chocolates');
+insert into tem_categoria values (4872647741072, 'Chás e Chocolates');
+insert into tem_categoria values (1071900184324, 'Chás e Chocolates');
+insert into tem_categoria values (2419370101677, 'Chás e Chocolates');
+
+insert into tem_categoria values (5311121102624, 'Enlatados');
+insert into tem_categoria values (7940229787025, 'Enlatados');
+insert into tem_categoria values (2453609540508, 'Enlatados');
+insert into tem_categoria values (5243209551946, 'Enlatados');
+insert into tem_categoria values (5775680912367, 'Enlatados');
+
+insert into tem_categoria values (2340891527939, 'Frutas');
+insert into tem_categoria values (6471869716982, 'Frutas');
+insert into tem_categoria values (5739588863582, 'Frutas');
+insert into tem_categoria values (5701128114035, 'Frutas');
+insert into tem_categoria values (8394027391764, 'Frutas');
+insert into tem_categoria values (8165576689366, 'Frutas');
+insert into tem_categoria values (7813862519536, 'Frutas');
+
+insert into tem_categoria values (8940554794292, 'Bolachas');
+insert into tem_categoria values (3759784226315, 'Bolachas');
+insert into tem_categoria values (2573778806042, 'Bolachas');
+insert into tem_categoria values (8613107322864, 'Bolachas');
+insert into tem_categoria values (3345786165241, 'Bolachas');
+insert into tem_categoria values (7362307416070, 'Bolachas');
+
+insert into tem_categoria values (1519997189837, 'Chocolates');
+insert into tem_categoria values (7917634690250, 'Chocolates');
+insert into tem_categoria values (5985409804091, 'Chocolates');
+insert into tem_categoria values (8377810473507, 'Chocolates');
+insert into tem_categoria values (5684394684188, 'Chocolates');
+insert into tem_categoria values (8653781909919, 'Chocolates');
+insert into tem_categoria values (6227218275617, 'Chocolates');
+insert into tem_categoria values (5788004280332, 'Chocolates');
+insert into tem_categoria values (7883969941806, 'Chocolates');
+insert into tem_categoria values (1052886131386, 'Chocolates');
+insert into tem_categoria values (2510353769360, 'Chocolates');
+insert into tem_categoria values (7845004830427, 'Chocolates');
+
+insert into tem_categoria values (5248846151702, 'Gomas');
+insert into tem_categoria values (2987948307130, 'Gomas');
+insert into tem_categoria values (7878616034728, 'Gomas');
+insert into tem_categoria values (8450196743835, 'Gomas');
+insert into tem_categoria values (2479220216657, 'Gomas');
+insert into tem_categoria values (7403498365885, 'Gomas');
+insert into tem_categoria values (2149472099442, 'Gomas');
+insert into tem_categoria values (2348262137248, 'Gomas');
+insert into tem_categoria values (6603850730999, 'Gomas');
+
+insert into tem_categoria values (3125750693139, 'Batatas Fritas');
+insert into tem_categoria values (9625587832897, 'Batatas Fritas');
+insert into tem_categoria values (5403360903101, 'Batatas Fritas');
+insert into tem_categoria values (6219541830862, 'Batatas Fritas');
+insert into tem_categoria values (6514243268757, 'Batatas Fritas');
+insert into tem_categoria values (8616611752094, 'Batatas Fritas');
+insert into tem_categoria values (2284344530635, 'Batatas Fritas');
+insert into tem_categoria values (8439455499278, 'Batatas Fritas');
+
+insert into tem_categoria values (5459415942837, 'Sandes');
+insert into tem_categoria values (6650262439477, 'Sandes');
+insert into tem_categoria values (4087699796587, 'Sandes');
+insert into tem_categoria values (8118918266130, 'Sandes');
+insert into tem_categoria values (1085234046721, 'Sandes');
+insert into tem_categoria values (1555053245786, 'Sandes');
+insert into tem_categoria values (9584833690590, 'Sandes');
+
+insert into tem_categoria values (8533636365161, 'Bolos');
+insert into tem_categoria values (2505292620512, 'Bolos');
+insert into tem_categoria values (5947269556256, 'Bolos');
+insert into tem_categoria values (1041036705095, 'Bolos');
+insert into tem_categoria values (5932150501379, 'Bolos');
+insert into tem_categoria values (6025014063287, 'Bolos');
+insert into tem_categoria values (1025943703805, 'Bolos');
+insert into tem_categoria values (5846218715704, 'Bolos');
+
+insert into tem_categoria values (3988656542326, 'Salgados');
+insert into tem_categoria values (6075239865358, 'Salgados');
+insert into tem_categoria values (2360325987130, 'Salgados');
+insert into tem_categoria values (9449159705966, 'Salgados');
+insert into tem_categoria values (8364840225124, 'Salgados');
+insert into tem_categoria values (1284354657704, 'Salgados');
+insert into tem_categoria values (8776563521432, 'Salgados');
+insert into tem_categoria values (5493181691267, 'Salgados');
+
+insert into tem_categoria values (7154465797509, 'Higiene e Saude');
+insert into tem_categoria values (8519339191682, 'Higiene e Saude');
+insert into tem_categoria values (1517011948532, 'Higiene e Saude');
+insert into tem_categoria values (3892977199091, 'Higiene e Saude');
+insert into tem_categoria values (3418608887277, 'Higiene e Saude');
+insert into tem_categoria values (1528910470243, 'Higiene e Saude');
+insert into tem_categoria values (1746191137346, 'Higiene e Saude');
+insert into tem_categoria values (1675328415728, 'Higiene e Saude');
+insert into tem_categoria values (3124727371836, 'Higiene e Saude');
+insert into tem_categoria values (5452149204981, 'Higiene e Saude');
+insert into tem_categoria values (5292599744895, 'Higiene e Saude');
+
+insert into tem_categoria values (0321302005519, 'Papelaria');
+insert into tem_categoria values (4176419843554, 'Papelaria');
+insert into tem_categoria values (3507797043457, 'Papelaria');
+insert into tem_categoria values (3705347281078, 'Papelaria');
+insert into tem_categoria values (8870652112264, 'Papelaria');
+insert into tem_categoria values (1111538823771, 'Papelaria');
+
+insert into tem_categoria values (2888818377511, 'Gelo');
+
+insert into tem_categoria values (1111111111111, 'Pastilhas');
+insert into tem_categoria values (1111111111111, 'Pastilhas');
+insert into tem_categoria values (1111111111111, 'Pastilhas');
+insert into tem_categoria values (1111111111111, 'Pastilhas');
