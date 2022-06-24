@@ -45,6 +45,7 @@ create table produto
 create table tem_categoria
     (ean numeric(13) not null,
      categoria_simples_nome varchar(80) not null,
+     constraint pk_tem_categoria primary key(ean),
      constraint fk_tem_categoria_produto foreign key(ean) references produto(ean),
      constraint fk_tem_categoria_categoria foreign key(categoria_simples_nome) references categoria_simples(categoria_simples_nome));
 
@@ -63,6 +64,7 @@ create table instalada_em
     (num_serie numeric(13) not null,
      fabricante varchar(80) not null,
      ponto_de_retalho_nome varchar(80) not null,
+     constraint pk_instalada_em primary key(num_serie, fabricante),
      constraint fk_instalada_em_ivm foreign key(num_serie, fabricante) references ivm(num_serie, fabricante),
      constraint fk_instalada_em_ponto_de_retalho foreign key(ponto_de_retalho_nome) references ponto_de_retalho(ponto_de_retalho_nome));
      
