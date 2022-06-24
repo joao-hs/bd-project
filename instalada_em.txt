@@ -1,0 +1,56 @@
+insert into instalada_em values (8888208809802, 'Vending lda', 'Auchan Oeiras');
+insert into instalada_em values (5348430509603, 'Vending lda',);
+insert into instalada_em values (4574860484968, 'Vending lda', 'Aeroporto Lisboa');
+insert into instalada_em values (7462252893192, 'Vending lda', 'Galp Oeiras');
+insert into instalada_em values (1994724148811, 'Vending lda', 'Aeroporto Faro');
+insert into instalada_em values (3535073013679, 'Vending lda', 'Instituto Superior Tecnico');
+insert into instalada_em values (7485419189999, 'Vending lda', 'Rodoviária Lagoa');
+insert into instalada_em values (9899990094627, 'Vending lda', 'Galp Alvalade');
+insert into instalada_em values (4961530410328, 'Vending lda', 'Alegro Sintra');
+insert into instalada_em values (9099724688753, 'Vending lda', 'Auchan Oeiras');
+
+insert into instalada_em values (8888208809802, 'Instant Foodies inc', 'Rodoviária Lagoa');
+insert into instalada_em values (5348430509603, 'Instant Foodies inc', 'Aeroporto Lisboa');
+insert into instalada_em values (4574860484968, 'Instant Foodies inc', 'Galp Faro');
+insert into instalada_em values (7462252893192, 'Instant Foodies inc', 'Aeroporto Faro');
+insert into instalada_em values (1994724148811, 'Instant Foodies inc', 'Escola Secondária de Valongo');
+insert into instalada_em values (3535073013679, 'Instant Foodies inc', 'Farmácia Fontainhas');
+insert into instalada_em values (7485419189999, 'Instant Foodies inc', 'Galp Porto');
+insert into instalada_em values (9899990094627, 'Instant Foodies inc', 'Aeroporto Faro');
+insert into instalada_em values (4961530410328, 'Instant Foodies inc','Galp Santo Tirso');
+insert into instalada_em values (9099724688753, 'Instant Foodies inc', 'Galp Porto');
+
+insert into instalada_em values (8888208809802, 'Azkoyen Group', 'BP Valongo');
+insert into instalada_em values (5348430509603, 'Azkoyen Group', 'Instituto Superior Tecnico');
+insert into instalada_em values (4574860484968, 'Azkoyen Group', 'Alegro Sintra');
+insert into instalada_em values (7462252893192, 'Azkoyen Group', 'BP Rua das Antas');
+insert into instalada_em values (1994724148811, 'Azkoyen Group', 'Escola Secondária de Valongo');
+insert into instalada_em values (3535073013679, 'Azkoyen Group', 'Farmacia ST');
+insert into instalada_em values (7485419189999, 'Azkoyen Group', 'Aeroporto Lisboa');
+insert into instalada_em values (9899990094627, 'Azkoyen Group', 'Escola Secondária de Valongo');
+insert into instalada_em values (4961530410328, 'Azkoyen Group', 'Auchan Oeiras');
+insert into instalada_em values (9099724688753, 'Azkoyen Group', 'Auchan Oeiras');
+
+insert into instalada_em values (8888208809802, 'GLORY', 'Universidade de Faro');
+insert into instalada_em values (5348430509603, 'GLORY', 'Oeiras Park');
+insert into instalada_em values (4574860484968, 'GLORY', 'Aeroporto Faro');
+insert into instalada_em values (7462252893192, 'GLORY', 'Escola Secundaria Vila Nova de Gaia');
+insert into instalada_em values (1994724148811, 'GLORY', 'Aeroporto Lisboa');
+insert into instalada_em values (3535073013679, 'GLORY', 'Escola Secundaria Vila Nova de Gaia');
+insert into instalada_em values (7485419189999, 'GLORY', 'Rodoviária Lagoa');
+insert into instalada_em values (9899990094627, 'GLORY', 'Rodoviária Lagoa');
+insert into instalada_em values (4961530410328, 'GLORY', 'Galp Valongo');
+insert into instalada_em values (9099724688753, 'GLORY', 'Auchan Lagoa');
+
+insert into instalada_em values (8888208809802, 'Fuji Electric', 'Galp Faro');
+insert into instalada_em values (5348430509603, 'Fuji Electric', 'Aeroporto Lisboa');
+insert into instalada_em values (4574860484968, 'Fuji Electric', 'Auchan Lagoa');
+insert into instalada_em values (7462252893192, 'Fuji Electric', 'Alegro Sintra');
+insert into instalada_em values (1994724148811, 'Fuji Electric', 'Galp Lagoa');
+insert into instalada_em values (3535073013679, 'Fuji Electric', 'BP Santo Tirso');
+insert into instalada_em values (7485419189999, 'Fuji Electric', 'Auchan Lagoa');
+insert into instalada_em values (9899990094627, 'Fuji Electric', 'Aeroporto Faro');
+insert into instalada_em values (4961530410328, 'Fuji Electric', 'Aeroporto Lisboa');
+insert into instalada_em values (9099724688753, 'Fuji Electric', 'Galp Sintra');
+
+
