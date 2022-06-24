@@ -1,0 +1,27 @@
+insert into ponto_de_retalho values ('Galp Oeiras', 'Oeiras', 'Lisboa');
+insert into ponto_de_retalho values ('Galp Alvalade', 'Lisboa', 'Lisboa');
+insert into ponto_de_retalho values ('BP Rua das Antas', 'Sintra', 'Lisboa');
+insert into ponto_de_retalho values ('Farmácia Fontainhas', 'Vila Nova de Gaia', 'Porto');
+insert into ponto_de_retalho values ('Escola Secondária de Valongo', 'Valongo', 'Porto');
+insert into ponto_de_retalho values ('Galp Santo Tirso', 'Santo Tirso', 'Porto');
+insert into ponto_de_retalho values ('Auchan Lagoa', 'Lagoa', 'Faro');
+insert into ponto_de_retalho values ('Universidade de Faro', 'Faro', 'Faro');
+
+insert into ponto_de_retalho values ('Oeiras Park', 'Oeiras', 'Lisboa');
+insert into ponto_de_retalho values ('Aeroporto Lisboa', 'Lisboa', 'Lisboa');
+insert into ponto_de_retalho values ('Galp Sintra', 'Sintra', 'Lisboa');
+insert into ponto_de_retalho values ('Escola Secundaria Vila Nova de Gaia', 'Vila Nova de Gaia', 'Porto');
+insert into ponto_de_retalho values ('Galp Valongo', 'Valongo', 'Porto');
+insert into ponto_de_retalho values ('BP Santo Tirso', 'Santo Tirso', 'Porto');
+insert into ponto_de_retalho values ('Galp Lagoa', 'Lagoa', 'Faro');
+insert into ponto_de_retalho values ('Galp Faro', 'Faro', 'Faro');
+
+insert into ponto_de_retalho values ('Auchan Oeiras', 'Oeiras', 'Lisboa');
+insert into ponto_de_retalho values ('Instituto Superior Tecnico', 'Lisboa', 'Lisboa');
+insert into ponto_de_retalho values ('Alegro Sintra', 'Sintra', 'Lisboa');
+insert into ponto_de_retalho values ('Galp Porto', 'Vila Nova de Gaia', 'Porto');
+insert into ponto_de_retalho values ('BP Valongo', 'Valongo', 'Porto');
+insert into ponto_de_retalho values ('Farmacia ST', 'Santo Tirso', 'Porto');
+insert into ponto_de_retalho values ('Rodoviária Lagoa', 'Lagoa', 'Faro');
+insert into ponto_de_retalho values ('Aeroporto Faro', 'Faro', 'Faro');
+
