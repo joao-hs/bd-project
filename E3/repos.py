@@ -79,7 +79,7 @@ for i in range(1, 6):
             unidades = r.randint(1, inst_plan[5])
             evento_reposicao.append([inst_plan[0], inst_plan[1], inst_plan[2], inst_plan[3], timestamp, unidades, inst_ret])
 for inst in evento_reposicao:
-    print("insert into evento_reposicao values ({}, {}, {}, {}, '{}', {}, {});".format(inst[0], inst[1], inst[2], inst[3], inst[4], inst[5], inst[6]), file=frepo_out)
+    print("insert into evento_reposicao values ({}, {}, {}, '{}', '{}', {}, {});".format(inst[0], inst[1], inst[2], inst[3], inst[4], inst[5], inst[6]), file=frepo_out)
 #print("ean, num_prateleira, num_serie, fabricante, instante, unidades, tin")
 #for inst in evento_reposicao:
 #    print(inst)
