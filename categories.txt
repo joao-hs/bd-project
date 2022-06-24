@@ -23,6 +23,7 @@ insert into categoria values ('Batatas Fritas');
 insert into categoria values ('Sandes');
 insert into categoria values ('Bolos');
 insert into categoria values ('Salgados');
+insert into categoria values ('Frutas');
 
 insert into categoria values ('Outros');
 insert into categoria values ('Consumíveis');
@@ -49,10 +50,12 @@ insert into categoria_simples values ('Batatas Fritas');
 insert into categoria_simples values ('Sandes');
 insert into categoria_simples values ('Bolos');
 insert into categoria_simples values ('Salgados');
+insert into categoria_simples values ('Frutas');
 insert into categoria_simples values ('Higiene e Saude');
 insert into categoria_simples values ('Papelaria');
 insert into categoria_simples values ('Gelo');
 insert into categoria_simples values ('Pastilhas');
+
 
 
 insert into super_categoria values ('Bebidas');
@@ -80,6 +83,7 @@ insert into tem_outra values ('Bebidas Frias', 'Bebidas Energéticas');
 insert into tem_outra values ('Bebidas Frias', 'Bebidas Alcoólicas');
 
 insert into tem_outra values ('Comida', 'Enlatados');
+insert into tem_outra values ('Comida', 'Frutas');
 insert into tem_outra values ('Comida', 'Pastelaria');
 insert into tem_outra values ('Comida', 'Aperitivos');
 insert into tem_outra values ('Pastelaria', 'Sandes');
