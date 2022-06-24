@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
-        <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
+        <link rel="stylesheet" href="/ist199249/templates/static/css/skeleton.css">
       
     </head>
     <body style="padding:20px">
@@ -47,8 +47,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <pre><code>
-SELECT dia_semana, concelho, SUM ( unidades ) AS unidades_totais 
+        <pre><code>SELECT dia_semana, concelho, SUM ( unidades ) AS unidades_totais 
 FROM vendas
 WHERE((CAST(ano AS int)*10000+CAST(mes AS int)*100+CAST(dia_mes AS int)) BETWEEN 20220201 AND 20230101)
 GROUP BY CUBE (dia_semana, concelho);

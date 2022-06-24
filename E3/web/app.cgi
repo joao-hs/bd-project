@@ -295,4 +295,23 @@ def olap2():
         cursor.close()
         dbConn.close()
 
+@app.route('/reset')
+def reset():
+    dbConn=None
+    cursor=None
+    try:
+        dbConn = psycopg2.connect(DB_CONNECTION_STRING)
+        cursor = dbConn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        f = open("reset.sql", "r")
+        lines = f.readlines()
+        for query in lines:
+           cursor.execute(query)
+        return render_template("reset.html")
+    except Exception as e:
+       	return str(e)
+    finally:
+        dbConn.commit()
+        cursor.close()
+        dbConn.close()
+
 CGIHandler().run(app)

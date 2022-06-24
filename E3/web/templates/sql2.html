@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
-        <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
+        <link rel="stylesheet" href="/ist199249/templates/static/css/skeleton.css">
       
     </head>
     <body style="padding:20px">
@@ -29,12 +29,11 @@
                 {% endfor %}
             </tbody>
         </table>
-        <pre><code>
-SELECT DISTINCT retalhista_nome FROM
+        <pre><code>SELECT DISTINCT retalhista_nome FROM
 retalhista AS r JOIN responsavel_por AS rp
 ON r.tin = rp.tin JOIN prateleira AS p 
 ON rp.fabricante = p.fabricante AND rp.num_serie = p.num_serie;
-        </code></pre>
+</code></pre>
     {% else %}
         <p>Erro: não foi possível obter dados da base de dados!</p>
     {% endif %}

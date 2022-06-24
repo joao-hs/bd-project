@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
-        <link rel="stylesheet" href="/ist199249/templates/static/css/normalize.css">
+        <link rel="stylesheet" href="/ist199249/templates/static/css/skeleton.css">
       
     </head>
     <body style="padding:20px">
@@ -53,8 +53,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <pre><code>
-SELECT concelho, cat, dia_semana, SUM ( unidades ) AS unidades_totais 
+        <pre><code>SELECT concelho, cat, dia_semana, SUM ( unidades ) AS unidades_totais 
 FROM vendas 
 WHERE distrito = 'Lisboa'
 GROUP BY GROUPING SETS ((cat, concelho),(cat, dia_semana), (concelho), (cat), (dia_semana), ());
