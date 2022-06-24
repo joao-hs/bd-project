@@ -1,0 +1,56 @@
+insert into responsavel_por values (9876543211111, 8888208809802, 'Vending lda');
+insert into responsavel_por values (7290903799810, 5348430509603, 'Vending lda');
+insert into responsavel_por values (6011158039898, 4574860484968, 'Vending lda');
+insert into responsavel_por values (6787954950079, 7462252893192, 'Vending lda');
+insert into responsavel_por values (3915490959574, 1994724148811, 'Vending lda');
+insert into responsavel_por values (5538346730286, 3535073013679, 'Vending lda');
+insert into responsavel_por values (2677939703594, 7485419189999, 'Vending lda');
+insert into responsavel_por values (2378179048864, 9899990094627, 'Vending lda');
+insert into responsavel_por values (4788875231357, 4961530410328, 'Vending lda');
+insert into responsavel_por values (1769001928832, 9099724688753, 'Vending lda');
+
+insert into responsavel_por values (1132877923583, 8888208809802, 'Instant Foodies inc');
+insert into responsavel_por values (4605211128102, 5348430509603, 'Instant Foodies inc');
+insert into responsavel_por values (3417630879649, 4574860484968, 'Instant Foodies inc');
+insert into responsavel_por values (8846259194266, 7462252893192, 'Instant Foodies inc');
+insert into responsavel_por values (7825838411766, 1994724148811, 'Instant Foodies inc');
+insert into responsavel_por values (2378179048864, 3535073013679, 'Instant Foodies inc');
+insert into responsavel_por values (8416517046952, 7485419189999, 'Instant Foodies inc');
+insert into responsavel_por values (7290903799810, 9899990094627, 'Instant Foodies inc');
+insert into responsavel_por values (9281061801443, 4961530410328, 'Instant Foodies inc');
+insert into responsavel_por values (1893660950613, 9099724688753, 'Instant Foodies inc');
+
+insert into responsavel_por values (9636314992455, 8888208809802, 'Azkoyen Group');
+insert into responsavel_por values (1048025576912, 5348430509603, 'Azkoyen Group');
+insert into responsavel_por values (3770978070948, 4574860484968, 'Azkoyen Group');
+insert into responsavel_por values (8978167380044, 7462252893192, 'Azkoyen Group');
+insert into responsavel_por values (8846259194266, 1994724148811, 'Azkoyen Group');
+insert into responsavel_por values (2982545428332, 3535073013679, 'Azkoyen Group');
+insert into responsavel_por values (3529102244786, 7485419189999, 'Azkoyen Group');
+insert into responsavel_por values (9087042596230, 9899990094627, 'Azkoyen Group');
+insert into responsavel_por values (9281061801443, 4961530410328, 'Azkoyen Group');
+insert into responsavel_por values (2717869371705, 9099724688753, 'Azkoyen Group');
+
+insert into responsavel_por values (5880934365457, 8888208809802, 'GLORY');
+insert into responsavel_por values (5126790930207, 5348430509603, 'GLORY');
+insert into responsavel_por values (6011158039898, 4574860484968, 'GLORY');
+insert into responsavel_por values (9425493289689, 7462252893192, 'GLORY');
+insert into responsavel_por values (9636314992455, 1994724148811, 'GLORY');
+insert into responsavel_por values (1048025576912, 3535073013679, 'GLORY');
+insert into responsavel_por values (2771899030136, 7485419189999, 'GLORY');
+insert into responsavel_por values (2677939703594, 9899990094627, 'GLORY');
+insert into responsavel_por values (9425493289689, 4961530410328, 'GLORY');
+insert into responsavel_por values (3529102244786, 9099724688753, 'GLORY');
+
+insert into responsavel_por values (9425493289689, 8888208809802, 'Fuji Electric');
+insert into responsavel_por values (5126790930207, 5348430509603, 'Fuji Electric');
+insert into responsavel_por values (8416517046952, 4574860484968, 'Fuji Electric');
+insert into responsavel_por values (3770978070948, 7462252893192, 'Fuji Electric');
+insert into responsavel_por values (6787954950079, 1994724148811, 'Fuji Electric');
+insert into responsavel_por values (1769001928832, 3535073013679, 'Fuji Electric');
+insert into responsavel_por values (9636314992455, 7485419189999, 'Fuji Electric');
+insert into responsavel_por values (9636314992455, 9899990094627, 'Fuji Electric');
+insert into responsavel_por values (7825838411766, 4961530410328, 'Fuji Electric');
+insert into responsavel_por values (1048025576912, 9099724688753, 'Fuji Electric');
+
+
