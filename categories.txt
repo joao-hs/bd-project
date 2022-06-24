@@ -1,0 +1,98 @@
+insert into categoria values ('Bebidas');
+insert into categoria values ('Águas');
+insert into categoria values ('Laticinios');
+insert into categoria values ('Bebidas Quentes');
+insert into categoria values ('Bebidas Frias');
+insert into categoria values ('Refrigerantes');
+insert into categoria values ('Bebidas Energéticas');
+insert into categoria values ('Sumos');
+insert into categoria values ('Bebidas  Alcoólicas');
+insert into categoria values ('Cafés');
+insert into categoria values ('Chás e Chocolates');
+
+insert into categoria values ('Comida');
+insert into categoria values ('Pastelaria');
+insert into categoria values ('Aperitivos');
+insert into categoria values ('Enlatados');
+insert into categoria values ('Aperitivos Doces');
+insert into categoria values ('Aperitivos Salgados');
+insert into categoria values ('Bolachas');
+insert into categoria values ('Chocolates');
+insert into categoria values ('Gomas');
+insert into categoria values ('Batatas Fritas');
+insert into categoria values ('Sandes');
+insert into categoria values ('Bolos');
+insert into categoria values ('Salgados');
+
+insert into categoria values ('Outros');
+insert into categoria values ('Consumíveis');
+insert into categoria values ('Higiene e Saude');
+insert into categoria values ('Papelaria');
+insert into categoria values ('Gelo');
+insert into categoria values ('Pastilhas');
+
+
+
+insert into categoria_simples values ('Águas');
+insert into categoria_simples values ('Laticinios');
+insert into categoria_simples values ('Refrigerantes');
+insert into categoria_simples values ('Bebidas Energéticas');
+insert into categoria_simples values ('Sumos');
+insert into categoria_simples values ('Bebidas  Alcoólicas');
+insert into categoria_simples values ('Cafés');
+insert into categoria_simples values ('Chás e Chocolates');
+insert into categoria_simples values ('Enlatados');
+insert into categoria_simples values ('Bolachas');
+insert into categoria_simples values ('Chocolates');
+insert into categoria_simples values ('Gomas');
+insert into categoria_simples values ('Batatas Fritas');
+insert into categoria_simples values ('Sandes');
+insert into categoria_simples values ('Bolos');
+insert into categoria_simples values ('Salgados');
+insert into categoria_simples values ('Higiene e Saude');
+insert into categoria_simples values ('Papelaria');
+insert into categoria_simples values ('Gelo');
+insert into categoria_simples values ('Pastilhas');
+
+
+insert into super_categoria values ('Bebidas');
+insert into super_categoria values ('Bebidas Quentes');
+insert into super_categoria values ('Bebidas Frias');
+insert into super_categoria values ('Comida');
+insert into super_categoria values ('Pastelaria');
+insert into super_categoria values ('Aperitivos');
+insert into super_categoria values ('Aperitivos Doces');
+insert into super_categoria values ('Aperitivos Salgados');
+insert into super_categoria values ('Outros');
+insert into super_categoria values ('Consumíveis');
+
+
+
+insert into tem_outra values ('Bebidas', 'Laticinios');
+insert into tem_outra values ('Bebidas', 'Águas');
+insert into tem_outra values ('Bebidas', 'Bebidas Quentes');
+insert into tem_outra values ('Bebidas', 'Bebidas Frias');
+insert into tem_outra values ('Bebidas Quentes', 'Cafés');
+insert into tem_outra values ('Bebidas Quentes', 'Chás e Chocolates');
+insert into tem_outra values ('Bebidas Frias', 'Refrigerantes');
+insert into tem_outra values ('Bebidas Frias', 'Sumos');
+insert into tem_outra values ('Bebidas Frias', 'Bebidas Energéticas');
+insert into tem_outra values ('Bebidas Frias', 'Bebidas Alcoólicas');
+
+insert into tem_outra values ('Comida', 'Enlatados');
+insert into tem_outra values ('Comida', 'Pastelaria');
+insert into tem_outra values ('Comida', 'Aperitivos');
+insert into tem_outra values ('Pastelaria', 'Sandes');
+insert into tem_outra values ('Pastelaria', 'Bolos');
+insert into tem_outra values ('Pastelaria', 'Salgados');
+insert into tem_outra values ('Aperitivos', 'Bolachas');
+insert into tem_outra values ('Aperitivos', 'Aperitivos Doces');
+insert into tem_outra values ('Aperitivos', 'Aperitivos Salgados');
+insert into tem_outra values ('Aperitivos Doces', 'Gomas');
+insert into tem_outra values ('Aperitivos Doces', 'Chocolates');
+insert into tem_outra values ('Aperitivos Salgados', 'Batatas Fritas');
+
+insert into tem_outra values ('Outros', 'Consumíveis');
+insert into tem_outra values ('Outros', 'Papelaria');
+insert into tem_outra values ('Outros', 'Gelo');
+insert into tem_outra values ('Consumíveis', 'Pastilhas');
