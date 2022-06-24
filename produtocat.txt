@@ -169,7 +169,7 @@ insert into tem_categoria values (1111538823771, 'Papelaria');
 
 insert into tem_categoria values (2888818377511, 'Gelo');
 
-insert into tem_categoria values (1111111111111, 'Pastilhas');
-insert into tem_categoria values (1111111111111, 'Pastilhas');
-insert into tem_categoria values (1111111111111, 'Pastilhas');
-insert into tem_categoria values (1111111111111, 'Pastilhas');
+insert into tem_categoria values (6347772554585, 'Pastilhas');
+insert into tem_categoria values (1837598307905, 'Pastilhas');
+insert into tem_categoria values (5752011825267, 'Pastilhas');
+insert into tem_categoria values (8421250231352, 'Pastilhas');

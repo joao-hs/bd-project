@@ -1,0 +1,56 @@
+insert into ivm values (8888208809802, 'Vending lda');
+insert into ivm values (5348430509603, 'Vending lda');
+insert into ivm values (4574860484968, 'Vending lda');
+insert into ivm values (7462252893192, 'Vending lda');
+insert into ivm values (1994724148811, 'Vending lda');
+insert into ivm values (3535073013679, 'Vending lda');
+insert into ivm values (7485419189999, 'Vending lda');
+insert into ivm values (9899990094627, 'Vending lda');
+insert into ivm values (4961530410328, 'Vending lda');
+insert into ivm values (9099724688753, 'Vending lda');
+
+insert into ivm values (8888208809802, 'Instant Foodies inc');
+insert into ivm values (5348430509603, 'Instant Foodies inc');
+insert into ivm values (4574860484968, 'Instant Foodies inc');
+insert into ivm values (7462252893192, 'Instant Foodies inc');
+insert into ivm values (1994724148811, 'Instant Foodies inc');
+insert into ivm values (3535073013679, 'Instant Foodies inc');
+insert into ivm values (7485419189999, 'Instant Foodies inc');
+insert into ivm values (9899990094627, 'Instant Foodies inc');
+insert into ivm values (4961530410328, 'Instant Foodies inc');
+insert into ivm values (9099724688753, 'Instant Foodies inc');
+
+insert into ivm values (8888208809802, 'Azkoyen Group');
+insert into ivm values (5348430509603, 'Azkoyen Group');
+insert into ivm values (4574860484968, 'Azkoyen Group');
+insert into ivm values (7462252893192, 'Azkoyen Group');
+insert into ivm values (1994724148811, 'Azkoyen Group');
+insert into ivm values (3535073013679, 'Azkoyen Group');
+insert into ivm values (7485419189999, 'Azkoyen Group');
+insert into ivm values (9899990094627, 'Azkoyen Group');
+insert into ivm values (4961530410328, 'Azkoyen Group');
+insert into ivm values (9099724688753, 'Azkoyen Group');
+
+insert into ivm values (8888208809802, 'GLORY');
+insert into ivm values (5348430509603, 'GLORY');
+insert into ivm values (4574860484968, 'GLORY');
+insert into ivm values (7462252893192, 'GLORY');
+insert into ivm values (1994724148811, 'GLORY');
+insert into ivm values (3535073013679, 'GLORY');
+insert into ivm values (7485419189999, 'GLORY');
+insert into ivm values (9899990094627, 'GLORY');
+insert into ivm values (4961530410328, 'GLORY');
+insert into ivm values (9099724688753, 'GLORY');
+
+insert into ivm values (8888208809802, 'Fuji Electric');
+insert into ivm values (5348430509603, 'Fuji Electric');
+insert into ivm values (4574860484968, 'Fuji Electric');
+insert into ivm values (7462252893192, 'Fuji Electric');
+insert into ivm values (1994724148811, 'Fuji Electric');
+insert into ivm values (3535073013679, 'Fuji Electric');
+insert into ivm values (7485419189999, 'Fuji Electric');
+insert into ivm values (9899990094627, 'Fuji Electric');
+insert into ivm values (4961530410328, 'Fuji Electric');
+insert into ivm values (9099724688753, 'Fuji Electric');
+
+
