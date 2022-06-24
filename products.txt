@@ -169,7 +169,7 @@ insert into produto values (1111538823771, 'Papelaria', 'Corretor');
 
 insert into produto values (2888818377511, 'Gelo', 'Gelo instantaneo');
 
-insert into produto values (1111111111111, 'Pastilhas', 'Tridente Menta');
-insert into produto values (1111111111111, 'Pastilhas', 'Tridente Morango');
-insert into produto values (1111111111111, 'Pastilhas', 'Tridente Oral-B');
-insert into produto values (1111111111111, 'Pastilhas', 'Tridente Frutos Vermelhos');
+insert into produto values (6347772554585, 'Pastilhas', 'Tridente Menta');
+insert into produto values (1837598307905, 'Pastilhas', 'Tridente Morango');
+insert into produto values (5752011825267, 'Pastilhas', 'Tridente Oral-B');
+insert into produto values (8421250231352, 'Pastilhas', 'Tridente Frutos Vermelhos');
